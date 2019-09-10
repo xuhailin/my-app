@@ -1,7 +1,0 @@
-version: '1'
-services:
-  my-app:
-    build: .
-    ports:
-      - '4200:4200'
-    command: ng serve

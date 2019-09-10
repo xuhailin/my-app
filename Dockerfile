@@ -11,4 +11,4 @@ RUN npm config set unsafe-perm true \
 
 EXPOSE 4200
 
-CMD ["ng", "serve"]
+CMD ["npm", "start"]
