@@ -1,0 +1,13 @@
+:host {
+  .main {
+    display: flex;
+    min-width: 1px;
+    min-height: calc(100vh - 80px);
+    > div.wrapper {
+      padding-top: 115px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  }
+}
+
