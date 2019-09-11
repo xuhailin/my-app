@@ -1,5 +1,160 @@
-:host {
+$background-color: #000;
+$text-color: #fff;
+$bubble-box-shadow:
+  0px 0px 2px rgba(255, 255, 255, 0.7) inset,
+  -1px 1px 2px -1px rgba(255, 255, 255, 0.1);
+
+:host .footer {
+  position: relative;
   text-align: center;
   min-height: 75px;
   line-height: 75px;
+  background: $background-color;
+
+  .bubble {
+    position: absolute;
+    font-size: 0;
+    line-height: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    bottom: 0px;
+    box-shadow: $bubble-box-shadow;
+    transform: skew(0deg,2deg);
+    animation: bubbleRise 4s linear infinite;
+  }
+  // 气泡
+  @for $i from 0 through 7 {
+    .bubble#{$i} {
+      width: #{random(5) + 10}px;
+      height: #{random(3) + 10}px;
+      animation:bubbleRise #{random(4) + 3}s linear infinite;
+      @if $i < 4 {
+        left: #{40 * $i + random(60)}px;
+      } @else {
+        right: #{40 * ($i - 4) + random(60)}px;
+      }
+    }
+  }
+  /*水母*/
+  .jellyfish1{right:50px;bottom:40px;}
+  .jellyfish2{left:60px;bottom:30px;}
+  .jellyfish {
+    position:absolute;
+    -webkit-animation:jellyfishSwimming 4s linear infinite alternate;
+    -moz-animation:jellyfishSwimming 4s linear infinite alternate;
+    animation:jellyfishSwimming 4s linear infinite alternate;
+    opacity:0.5;
+    &_head {
+      position: absolute;
+      left: 0px;
+      top: -15px;
+      display: block;
+      height: 25px;
+      width: 30px;
+      background: rgba(255, 255, 255,0.1);
+      border: 1px solid rgba(255, 255, 255,0.1);
+      border-radius: 20px 20px 10px 10px/20px 20px 16px 16px;
+      box-shadow:
+        0px 0px 4px rgba(255, 255, 255,0.7) inset,
+        1px 1px 2px rgba(255, 255, 255,0.5) inset,
+        3px 3px 1px rgba(255, 255, 255,0.5) inset,
+        -1px -1px 1px rgba(255, 255, 255,0.3) inset;
+      animation: jellyfish_headChange 4s linear infinite alternate;
+      &:after {
+        content:'';
+        display:block;
+        height:3px;
+        width:5px;
+        background:rgba(255, 255, 255,0.5);
+        position:absolute;
+        left:3px;
+        top:2px;
+        border-radius:5px/3px;
+        box-shadow:0px 0px 1px rgba(255, 255, 255,0.9) inset;
+        transform:rotate(-15deg);
+      }
+    }
+    &_tail {
+      position:absolute;
+      left: 6px;
+      top: 8px;
+      display:block;
+      height:20px;
+      width:18px;
+      border:0.5px solid rgba(255, 255, 255,0.5);
+      border-top:none;
+      border-bottom:none;
+      border-radius:10px 10px 16px 6px/20px 20px 6px 6px;
+      box-shadow: 0px 0px 3px rgba(255, 255, 255,0.5) inset,0px 4px 3px rgba(255, 255, 255,0.3) inset;
+      transform-origin: 50% 0%;
+      animation:jellyfish_tailChange 4s linear infinite alternate;
+      &_in {
+        position:absolute;
+        left:-0.5px;
+        top:0px;
+        display:block;
+        height:16px;
+        width:10px;
+        border-left:0.5px solid rgba(255, 255, 255,0.5);
+        border-radius:10px 20px 16px 10px/20px 20px 6px 20px;
+        box-shadow:3px 0px 3px rgba(255, 255, 255,0.5) inset;
+        transform:rotate(14deg);
+      }
+      &:after {
+        content:'';
+        position:absolute;
+        left:0.5px;
+        top:1px;
+        display:block;
+        height:21px;
+        width:15.5px;
+        border-left: 0.5px solid rgba(255, 255, 255,0.3);
+        border-right: 0.5px solid rgba(255, 255, 255,0.5);
+        border-radius:10px/10px 20px 16px 16px;
+        box-shadow:0px 0px 3px rgba(255, 255, 255,0.5) inset,0px 3px 3px rgba(255, 255, 255,0.4) inset;
+      }
+      &:before {
+        content:'';
+        position:absolute;
+        left:1.5px;
+        top:1px;
+        display:block;
+        height:17px;
+        width:17px;
+        border-right: 0.5px solid rgba(255, 255, 255,0.5);
+        border-radius: 15px 10px 16px 16px/30px 30px 8px 8px;
+        box-shadow: 0px 0px 3px rgba(255, 255, 255,0.5) inset;
+        transform: rotate(-6deg);
+      }
+    }
+  }
+}
+
+@keyframes bubbleRise {
+  0%{transform:translate(0px,0px); opacity:0; border-color:rgba(255, 255, 255,0.1);}
+  10%{transform:translate(0px,0px); opacity:1;}
+  30%{transform:translate(-1px,-15px);}
+  50%{transform:translate(1px,-30px);}
+  75%{transform:translate(-1px,-50px) scale(1.2);}
+  98%{opacity:1; border-color:rgba(255, 255, 255,0.25);}
+  100%{transform:translate(0px,-67px) scale(1.4); opacity:0; border-color:rgba(255, 255, 255,0.7);}
+}
+
+@keyframes jellyfishSwimming {
+  0%{transform:translate(0px,0px) rotate(-4deg) scale(0.8);}
+  20%{transform:translate(-1px,-3px) rotate(-6deg) scale(0.8);}
+  50%{transform:translate(-2px,-1px) rotate(-3deg) scale(0.8);}
+  70%{transform:translate(-1px,-3px) rotate(-6deg) scale(0.8);}
+  100%{transform:translate(0px,0px) rotate(-4deg) scale(0.8);}
+}
+
+@keyframes jellyfish_tailChange{
+  0%{transform:scale(0.8);}
+  5%{transform:scale(0.9,0.75);}
+  20%{transform:scale(0.7,1);}
+  50%{transform:scale(0.8);}
+  55%{transform:scale(0.9,0.75);}
+  70%{transform:scale(0.7,1);}
+  100%{transform:scale(0.8);}
 }
