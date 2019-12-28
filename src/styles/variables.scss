@@ -1,7 +1,8 @@
-$color1: #dff0ea;
-$color2: #95adbe;
-$color3: #574f7d;
-$color4: #4f3a65;
+$color1: #F85F73;
+$color2: #FBE8D3;
+$color3: #928A97;
+$color4: #283C63;
+
 /*
 $color1: #bad7df;
 $color2: #ffe2e2;
@@ -9,7 +10,10 @@ $color3: #f6f6f6;
 $color4: #99ddcc;*/
 
 $primary-color: $color1;
-$tip-color: $color4;
-$icon-color: $color4;
-$text-color: $color2;
-$sub-text-color: $color2;
+$tip-color: $color1;
+$icon-color: $color1;
+$text-color: $color4;
+$sub-text-color: $color3;
+$content-color: $color2;
+
+$box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
