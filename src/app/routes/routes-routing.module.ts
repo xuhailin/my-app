@@ -2,7 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LayoutComponent} from '../layout/layout.component';
 import {SearchComponent} from './search/search.component';
-import {ArticleComponent} from './article/article.component';
+import { TopicComponent } from './topic/topic.component';
+import { ShowCssComponent } from './search/show-css/show-css.component';
 
 export const routes: Routes = [
   {
@@ -11,7 +12,8 @@ export const routes: Routes = [
     children: [
       { path: 'home', loadChildren: './home/home.module#HomeModule' },
       { path: 'search', component: SearchComponent },
-      { path: 'article', component: ArticleComponent },
+      { path: 'search/show-css', component: ShowCssComponent },
+      { path: 'topic', component: TopicComponent },
     ],
   },
 ];
