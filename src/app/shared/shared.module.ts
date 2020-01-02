@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../material.module';
-import { ShapeComponent } from './components/shape/shape.component';
 import { HtmlPipe } from './pipes/html.pipe';
+import { ShapeDirective } from './directives/shape.directive';
 
 const MODULES = [
   CommonModule,
@@ -12,7 +12,7 @@ const MODULES = [
 ];
 
 const COMPONENTS = [
-  ShapeComponent,
+  ShapeDirective,
   HtmlPipe,
 ];
 @NgModule({
