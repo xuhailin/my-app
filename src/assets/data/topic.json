@@ -1,3 +1,8 @@
 {
+  "css": {
     "bgAndBorder": "2020-01-01"
+  },
+  "javascript": {
+    "bgAndBorder": "2020-01-01"
+  }
 }

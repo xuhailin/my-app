@@ -274,7 +274,7 @@
             <div class="effect-content">
                 <div class="effect-show">
                     <div id="zebraStripes" class="fullBg">
-                        <span>第一行</span> 
+                        <span>第一行</span>
                         <span>第二行</span>
                         <span>第三行</span>
                         <span>第四行</span>
@@ -290,95 +290,133 @@
     <ul class="effect-modules">
         <li class="effect-module">
             <div class="effect-content">
-                <div class="effect-show">
-                    <div id="Mushroom1">
-                        <div class="head">
-                            <div class="dots">
-                                <div class="dot1"></div>
-                                <div class="dot2"></div>
-                                <div class="dot3"></div>
-                                <div class="dot4"></div>
-                            </div>
+              <div class="effect-show">
+                <div id="Mushroom1">
+                    <div class="head">
+                        <div class="dots">
+                            <div class="dot1"></div>
+                            <div class="dot2"></div>
+                            <div class="dot3"></div>
+                            <div class="dot4"></div>
                         </div>
-                        <div class="foot">
-                        </div>
-                        <div class="shadow"></div>
                     </div>
-                    <div id="Mushroom2">
-                        <div class="head">
-                            <div class="dots">
-                                <div class="dot1"></div>
-                                <div class="dot2"></div>
-                                <div class="dot3"></div>
-                            </div>
-                        </div>
-                        <div class="foot">
-                        </div>
-                        <div class="shadow"></div>
+                    <div class="foot">
                     </div>
+                    <div class="shadow"></div>
                 </div>
-                <div class="effect-title">蘑菇</div>
-            </div>
-        </li>
-        <li class="effect-module">
-            <div class="effect-content">
-                <div class="effect-show">
-                    <div id="pikachu" class="wrapper">
-                        <div class="lowerLip-wrapper">
-                            <div class="lowerLip"></div>
+                <div id="Mushroom2">
+                    <div class="head">
+                        <div class="dots">
+                            <div class="dot1"></div>
+                            <div class="dot2"></div>
+                            <div class="dot3"></div>
                         </div>
-                        <div class="nose"></div>
-                        <div class="eye left"></div>
-                        <div class="eye right"></div>
-                        <div class="face left"></div>
-                        <div class="face right"></div>
-                        <div class="upperLip left"></div>
-                        <div class="upperLip right"></div>
                     </div>
+                    <div class="foot">
+                    </div>
+                    <div class="shadow"></div>
                 </div>
-                <div class="effect-title">皮卡丘</div>
             </div>
-        </li>
-    </ul>
+            <div class="effect-title">蘑菇</div>
+        </div>
+    </li>
+    <li class="effect-module">
+        <div class="effect-content">
+            <div class="effect-show">
+                <div id="pikachu" class="wrapper">
+                    <div class="lowerLip-wrapper">
+                        <div class="lowerLip"></div>
+                    </div>
+                    <div class="nose"></div>
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="upperLip left"></div>
+                    <div class="upperLip right"></div>
+                </div>
+            </div>
+            <div class="effect-title">皮卡丘</div>
+        </div>
+    </li>
+</ul>
 
-    <div class="separate"><span> 其他 </span></div>
-    <ul class="effect-modules" id="other">
-        <li class="effect-module">
-            <div class="effect-content" style="width: auto;height: auto;">
-                <div class="effect-show" style="width: auto;height: auto;">
-                    <div class="graph">
-                        <ul class="months">
-                            <li>Jan</li>
-                            <li>Feb</li>
-                            <li>Mar</li>
-                            <li>Apr</li>
-                            <li>May</li>
-                            <li>Jun</li>
-                            <li>Jul</li>
-                            <li>Aug</li>
-                            <li>Sep</li>
-                            <li>Oct</li>
-                            <li>Nov</li>
-                            <li>Dec</li>
-                        </ul>
-                        <ul class="days">
-                            <li>Sun</li>
-                            <li>Mon</li>
-                            <li>Tue</li>
-                            <li>Wed</li>
-                            <li>Thu</li>
-                            <li>Fri</li>
-                            <li>Sat</li>
-                        </ul>
+<div class="separate"><span> 其他 </span></div>
+<ul class="effect-modules" id="other">
+    <li class="effect-module">
+        <div class="effect-content" style="width: auto;height: auto;">
+            <div class="effect-show" style="width: auto;height: auto;">
+                <div class="graph">
+                    <ul class="months">
+                        <li>Jan</li>
+                        <li>Feb</li>
+                        <li>Mar</li>
+                        <li>Apr</li>
+                        <li>May</li>
+                        <li>Jun</li>
+                        <li>Jul</li>
+                        <li>Aug</li>
+                        <li>Sep</li>
+                        <li>Oct</li>
+                        <li>Nov</li>
+                        <li>Dec</li>
+                    </ul>
+                    <ul class="days">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <!-- added via javascript -->
+                    <ul class="squares">
                         <!-- added via javascript -->
-                        <ul class="squares">
-                            <!-- added via javascript -->
-                            <li *ngFor="let i of range" attr.data-level="{{ i }}"></li>
-                        </ul>
-                    </div>
+                        <li *ngFor="let i of range" attr.data-level="{{ i }}"></li>
+                    </ul>
                 </div>
-                <div class="effect-title">gtihub 日志布局</div>
             </div>
-        </li>
+            <div class="effect-title">github 日志布局</div>
+        </div>
+    </li>
+    <li class="effect-module">
+      <div class="effect-content" style="width: auto;height: auto;">
+          <div class="effect-show" style="width: auto;height: auto;">
+              <div id="topic-test1">
+                <div class="article-box">
+                  <div class="article-wrapper">
+                    <div class="article" [routerLink]="['/topic']">
+                      <div class="article-publication-meta">
+                        <strong>JAVASCRIPT</strong>
+                        <span class="time">
+                          2019 · 9 · 24
+                        </span>
+                      </div>
+                      <div class="article-title">
+                        我是一个文章的超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
+                      </div>
+                      <div class="article-content">
+                        <p>
+                          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
+                          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
+                          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
+                          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
+                          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
+                          文章内容...
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="article-bg">
+                    <div class="article-bg-left"></div>
+                    <div class="article-bg-right"></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+              <div class="effect-title">文章纯css概览</div>
+          </div>
+      </li>
     </ul>
 </div>

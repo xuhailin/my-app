@@ -1,3 +1,5 @@
+@import 'src/styles/variables.scss';
+
 #showCss {
 
     text-align: left;
@@ -13,7 +15,7 @@
     .autoWidth {
         width: auto !important;
     }
-    
+
     .inline{
         display: inline-block !important;
     }
@@ -56,7 +58,7 @@
                 text-decoration: underline;
             }
         }
-    
+
         &-show {
             width: 200px;
             height: 120px;
@@ -78,7 +80,7 @@
             }
         }
     }
-    
+
      .showEffectNavFixed{
         position: fixed;
         margin: 0 auto;
@@ -86,7 +88,7 @@
         z-index: 6;
         top: 0;
     }
-    
+
     div {
         box-sizing: border-box;
     }
@@ -229,7 +231,7 @@
         z-index: 3;
         overflow: hidden;
     }
-    
+
     .dots {
         .dot1{
             position: absolute;
@@ -430,7 +432,7 @@
     padding: 20px;
     border: 1px #e1e4e8 solid;
 
-    .months { 
+    .months {
         grid-area: months;
         display: grid;
         grid-template-columns: calc(#{$week-width} * 4) /* Jan */
@@ -451,13 +453,13 @@
         grid-gap: $square-gap;
         grid-template-rows: repeat(7, #{$square-size});
     }
-    .days { 
+    .days {
         grid-area: days;
         li:nth-child(odd) {
             visibility: hidden;
         }
     }
-    .squares { 
+    .squares {
         grid-area: squares;
         grid-auto-flow: column;
         grid-auto-columns: $square-size;
@@ -480,7 +482,7 @@
         padding: 0px;
         list-style: none;
     }
-} 
+}
 
 #moreBorder {
     width: 160px;
@@ -543,13 +545,13 @@ b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就�
         #E6EBE0 0,#E6EBE0 49.98%);*/
         background:repeating-linear-gradient(45deg, #ED6A5A 0,#ED6A5A 25%,#E6EBE0 0,#E6EBE0 50%);
         background-size: 42.426406871px 42.426406871px; /*宽度如果想要15px 则就是15px根号2*2 背景宽高，默认会重复，所以就是条纹了*/
-    } 
+    }
     /**
       相似的条纹图案
     */
     &-L {
         background: #ED6A5A;
-        background-image: repeating-linear-gradient(30deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,.1) 15px,transparent 0,transparent 30px);    
+        background-image: repeating-linear-gradient(30deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,.1) 15px,transparent 0,transparent 30px);
     }
 }
 
@@ -614,7 +616,7 @@ b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就�
     &-1 {
         width:  calc(95% - 1em);
         background: linear-gradient(#E6EBE0,#E6EBE0) padding-box,
-        repeating-linear-gradient(-45deg,#ED6A5A 0,#ED6A5A 12.5%,transparent 0,transparent 25%,#5CA4A9 0,#5CA4A9 37.5%,transparent 0,transparent 50%) 0/5em 5em;    
+        repeating-linear-gradient(-45deg,#ED6A5A 0,#ED6A5A 12.5%,transparent 0,transparent 25%,#5CA4A9 0,#5CA4A9 37.5%,transparent 0,transparent 50%) 0/5em 5em;
     }
 
     &-2 {
@@ -661,7 +663,7 @@ b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就�
     padding: 1em;
     z-index: 0;
     color: #E6EBE0;
-    
+
     &:before {
         content: '';
         position: absolute;
@@ -692,7 +694,7 @@ b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就�
         height: 48%;
         background: #ED6A5A;
     }
-    &-1 {  
+    &-1 {
         background:
                 linear-gradient(135deg,transparent 10px,#ED6A5A 0) top left,
                 linear-gradient(-135deg,transparent 10px,#ED6A5A 0) top right,
@@ -747,7 +749,7 @@ b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就�
             transform-origin: bottom;
         }
      }
-     
+
 }
 
 #pieChart {
@@ -1012,4 +1014,132 @@ b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就�
     &:hover {
         color:#ED6A5A;
     }
+}
+
+#topic-test1 {
+  $circle-width: 200px;
+  $circle-bg-width: 300px;
+  $padding: 10px;
+
+  @mixin circle($width, $padding: 0) {
+    @if $padding {
+      position: relative;
+      top: $padding;
+      left: $padding;
+      width: $width - $padding * 2;
+      height: $width - $padding * 2;
+      border-radius: 50%;
+      overflow: hidden;
+    } @else {
+      position: relative;
+      width: $width;
+      height: $width;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+  @mixin article-shadow($value) {
+    left: random($circle-width - $padding - $value ) + px;
+    top: random($circle-width - $padding - $value) + px;
+    content: '';
+    position: absolute;
+    width: $value + px;
+    height: $value + px;
+    border-radius: 50%;
+    background: rgba(248, 95, 115, 0.3);
+  }
+
+  .article {
+    cursor: pointer;
+    @include circle($circle-width, $padding);
+    &::after {
+      @include article-shadow(random(10) + 20);
+    }
+    &::before {
+      @include article-shadow(random(20) + 40);
+    }
+
+    &-wrapper {
+      @include circle($circle-width);
+      box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
+      border: 10px dotted $primary-color;
+      background: #fff;
+      z-index: 1;
+    }
+
+    &-publication-meta {
+      font-size: 12px;
+      color: $sub-text-color;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-top: 10px;
+    }
+    &-title {
+      font-size: 18px;
+      margin: 10px 0;
+      text-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    &-content {
+      text-align: center;
+    }
+    &:focus {
+      outline: none;
+    }
+    &-box {
+      position: relative;
+      .article-bg {
+        position: absolute;
+        width: $circle-width + $circle-bg-width;
+        height: $circle-width / 2;
+        background: #F85F73;
+        top: $circle-width / 4 + 10px;
+        left: -($circle-bg-width / 2);
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+        &-left,
+        &-right {
+          position: absolute;
+          width: 120px;
+          height: 100px;
+          background: #e26072;
+          z-index: -2;
+          top: 20px;
+          border-radius: 2px;
+        }
+        &-left {
+          left: -80px;
+          box-shadow: inset -19px -10px 20px 2px rgba(0, 0, 0, 0.2);
+          &:before {
+            content: '';
+            border-top: 50px solid #e26072;
+            border-left: 40px solid #fff;
+            border-bottom: 50px solid transparent;
+            position: absolute;
+          }
+        }
+        &-right {
+          right: -80px;
+          box-shadow: inset 19px -10px 20px 2px rgba(0, 0, 0, 0.2);
+          &:before {
+            right: 0;
+            content: '';
+            border-top: 50px solid #e26072;
+            border-right: 40px solid #fff;
+            border-bottom: 50px solid transparent;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+  ::ng-deep {
+    .material-icons {
+      color: $icon-color;
+      vertical-align: -0.175rem;
+      font-size: 18px;
+    }
+  }
 }

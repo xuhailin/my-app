@@ -13,7 +13,7 @@ export const routes: Routes = [
       { path: 'home', loadChildren: './home/home.module#HomeModule' },
       { path: 'search', component: SearchComponent },
       { path: 'search/show-css', component: ShowCssComponent },
-      { path: 'topic', component: TopicComponent },
+      { path: 'topic/:id', component: TopicComponent },
     ],
   },
 ];

@@ -1,129 +1,23 @@
 @import 'src/styles/variables.scss';
 
-$circle-width: 200px;
-$circle-bg-width: 300px;
-$padding: 10px;
-
-@mixin circle($width, $padding: 0) {
-  @if $padding {
-    position: relative;
-    top: $padding;
-    left: $padding;
-    width: $width - $padding * 2;
-    height: $width - $padding * 2;
-    border-radius: 50%;
-    overflow: hidden;
-  } @else {
-    position: relative;
-    width: $width;
-    height: $width;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-}
-
-@mixin article-shadow($value) {
-  left: random($circle-width - $padding - $value ) + px;
-  top: random($circle-width - $padding - $value) + px;
-  content: '';
-  position: absolute;
-  width: $value + px;
-  height: $value + px;
-  border-radius: 50%;
-  background: rgba(248, 95, 115, 0.3);
-}
+$topic-width: 250px;
+$topic-height: 350px;
 
 :host {
   .article {
-    cursor: pointer;
-    @include circle($circle-width, $padding);
-    &::after {
-      @include article-shadow(random(10) + 20);
-    }
-    &::before {
-      @include article-shadow(random(20) + 40);
-    }
+    width: 250px;
+    height: 350px;
+    overflow: hidden;
+    background: #8d8282;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow:
+      -80px 5px 160px rgba(0, 0, 0, 0.3),
+      -80px 5px 160px rgba(0, 0, 0, 0.3) inset;
 
     &-wrapper {
-      @include circle($circle-width);
-      box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.3);
-      border: 10px dotted $primary-color;
-      background: #fff;
-      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(31, 140px); // 最大31天
     }
-
-    &-publication-meta {
-      font-size: 12px;
-      color: $sub-text-color;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      margin-top: 10px;
-    }
-    &-title {
-      font-size: 18px;
-      margin: 10px 0;
-      text-align: center;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    &-content {
-      text-align: center;
-    }
-    &:focus {
-      outline: none;
-    }
-    &-box {
-      position: relative;
-      .article-bg {
-        position: absolute;
-        width: $circle-width + $circle-bg-width;
-        height: $circle-width / 2;
-        background: #F85F73;
-        top: $circle-width / 4 + 10px;
-        left: -($circle-bg-width / 2);
-        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-        &-left,
-        &-right {
-          position: absolute;
-          width: 120px;
-          height: 100px;
-          background: #e26072;
-          z-index: -2;
-          top: 20px;
-          border-radius: 2px;
-        }
-        &-left {
-          left: -80px;
-          box-shadow: inset -19px -10px 20px 2px rgba(0, 0, 0, 0.2);
-          &:before {
-            content: '';
-            border-top: 50px solid #e26072;
-            border-left: 40px solid #fff;
-            border-bottom: 50px solid transparent;
-            position: absolute;
-          }
-        }
-        &-right {
-          right: -80px;
-          box-shadow: inset 19px -10px 20px 2px rgba(0, 0, 0, 0.2);
-          &:before {
-            right: 0;
-            content: '';
-            border-top: 50px solid #e26072;
-            border-right: 40px solid #fff;
-            border-bottom: 50px solid transparent;
-            position: absolute;
-          }
-        }
-      }
-    }
-  }
-}
-:host ::ng-deep {
-  .material-icons {
-    color: $icon-color;
-    vertical-align: -0.175rem;
-    font-size: 18px;
   }
 }
