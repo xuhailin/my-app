@@ -8,16 +8,25 @@ $topic-height: 350px;
     width: 250px;
     height: 350px;
     overflow: hidden;
-    background: #8d8282;
+    background: #17141d;
     border-radius: 15px;
     padding: 15px;
-    box-shadow:
-      -80px 5px 160px rgba(0, 0, 0, 0.3),
-      -80px 5px 160px rgba(0, 0, 0, 0.3) inset;
-
+    box-shadow: -15px 0 45px $box-shadow-color;
+    transition: all 0.2s;
+    cursor: pointer;
     &-wrapper {
-      display: grid;
-      grid-template-columns: repeat(31, 140px); // 最大31天
+      display: flex;
+      padding: 15px;
     }
+    &:not(:first-child) {
+      margin-left: -140px;
+    }
+    &:hover {
+      transform: translateY(-15px);
+    }
+  }
+  // 后面所有的article标签 + 是一个
+  .article:focus ~ .article, .article:hover ~ .article {
+    transform: translateX(130px);
   }
 }
