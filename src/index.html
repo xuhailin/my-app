@@ -8,9 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <link rel="stylesheet" href="assets/live2d/css/live2d.css" />
 </head>
 <body>
   <app-root></app-root>
+  <div id="kanpanniang">
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+  </div>
+  <script type="text/javascript" src="assets/live2d/js/live2d.js"></script>
+  <script type="text/javascript">
+    // 动态获取小人，未用到本地model
+    var json =
+    loadlive2d('live2d', 'assets/live2d/index.json');
+  </script>
 </body>
 </html>
