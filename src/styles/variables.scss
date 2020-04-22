@@ -1,6 +1,6 @@
 $color1: #F85F73;
 $color2: #FBE8D3;
-$color3: #928A97;
+$color3: #7a7a8c;
 $color4: #283C63;
 
 /*
@@ -12,18 +12,36 @@ $color4: #99ddcc;*/
 $primary-color: $color1;
 $tip-color: $color1;
 $icon-color: $color1;
-$text-color: $color4;
+$text-color: rgba(white, 0.87);
 $sub-text-color: $color3;
-$content-color: $color3;
+$content-color: rgba(white, 0.54);
 $box-shadow-color: #000;
 
 $box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 
 @mixin background {
   background-image: linear-gradient(to top left,#ff8a00,#e52e71);
-  color: #fff;
+  color: $text-color;
+}
+
+@mixin color-background {
+  background: linear-gradient(90deg,#ff8a00,#e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: none;
 }
 
 @mixin topic_summary {
 
+}
+
+::ng-deep {
+  .mat-tab-link.mat-tab-label-active {
+    opacity: 1;
+  }
+  .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-image: linear-gradient(to top left, #ff8a00, #e52e71);
+  }
 }

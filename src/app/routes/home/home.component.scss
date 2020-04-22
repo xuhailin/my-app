@@ -10,10 +10,10 @@ $topic-height: 350px;
     overflow: hidden;
     background: #17141d;
     border-radius: 15px;
-    padding: 15px;
+    padding: 20px;
     box-shadow: -15px 0 45px $box-shadow-color;
     transition: all 0.2s;
-    cursor: pointer;
+    position: relative;
     &-wrapper {
       display: flex;
       padding: 15px;
@@ -23,6 +23,35 @@ $topic-height: 350px;
     }
     &:hover {
       transform: translateY(-15px);
+    }
+
+    &-publication-meta {
+      font-size: 12px;
+      .time {
+        color: $sub-text-color;
+      }
+    }
+
+    &-title {
+      margin: 20px 0;
+      font-weight: 700;
+      cursor: pointer;
+      &:hover {
+        @include color-background();
+      }
+    }
+
+    &-content {
+      color: $content-color;
+    }
+
+    &-footer {
+      position: absolute;
+      bottom: 20px;
+      color: $sub-text-color;
+      strong {
+        display: block;
+      }
     }
   }
   // 后面所有的article标签 + 是一个

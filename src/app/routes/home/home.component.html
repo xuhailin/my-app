@@ -1,118 +1,20 @@
 <div class="article-box">
   <div class="article-wrapper">
-    <div class="article" [routerLink]="['/topic']">
+    <div class="article" *ngFor="let item of articles | keyvalue" [routerLink]="['/topic', item.key]">
       <div class="article-publication-meta">
+          Article
         <span class="time">
-          2019-9-24
+          {{ item.key }}
         </span>
       </div>
       <div class="article-title">
-        我是一个文章的超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
+        <h2>{{ item.value.title }}</h2>
       </div>
       <div class="article-content">
-        <p>
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          文章内容...
-        </p>
+        <h5>{{ item.value.description }}</h5>
       </div>
       <div class="article-footer">
-        <strong>JAVASCRIPT</strong>
-      </div>
-    </div>
-    <div class="article" [routerLink]="['/topic']">
-      <div class="article-publication-meta">
-        <span class="time">
-          2019-10-24
-        </span>
-      </div>
-      <div class="article-title">
-        我是一个文章的超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-      </div>
-      <div class="article-content">
-        <p>
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          文章内容...
-        </p>
-      </div>
-      <div class="article-footer">
-        <strong>JAVASCRIPT</strong>
-      </div>
-    </div>
-    <div class="article" [routerLink]="['/topic']">
-      <div class="article-publication-meta">
-        <span class="time">
-          2019-10-24
-        </span>
-      </div>
-      <div class="article-title">
-        我是一个文章的超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-      </div>
-      <div class="article-content">
-        <p>
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          文章内容...
-        </p>
-      </div>
-      <div class="article-footer">
-        <strong>JAVASCRIPT</strong>
-      </div>
-    </div>
-    <div class="article" [routerLink]="['/topic']">
-      <div class="article-publication-meta">
-        <span class="time">
-          2019-10-24
-        </span>
-      </div>
-      <div class="article-title">
-        我是一个文章的超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-      </div>
-      <div class="article-content">
-        <p>
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          文章内容...
-        </p>
-      </div>
-      <div class="article-footer">
-        <strong>JAVASCRIPT</strong>
-      </div>
-    </div>
-    <div class="article" [routerLink]="['/topic']">
-      <div class="article-publication-meta">
-        <span class="time">
-          2019-10-24
-        </span>
-      </div>
-      <div class="article-title">
-        我是一个文章的超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-      </div>
-      <div class="article-content">
-        <p>
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          我是一个文章的内容超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长超长标题
-          文章内容...
-        </p>
-      </div>
-      <div class="article-footer">
-        <strong>JAVASCRIPT</strong>
+        <strong *ngFor="let tag of item.value.tags">{{tag}}</strong>
       </div>
     </div>
   </div>
