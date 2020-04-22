@@ -26,17 +26,12 @@ export class TopicComponent implements OnInit {
   }
 
   loadArticle(id: string) {
-    this.http.get('assets/data/topic.json').subscribe(
-      d => {
-        this.articleName = d[id];
-        fetch(`assets/data/articles/${this.articleName}.md`)
+    fetch(`assets/data/articles/${id}.md`)
         .then(data => data.text())
         .then (text => {
           const content = text.trim();
           this.parseFrontMatter(content);
-        })
-      }
-    );
+        });
   }
 
   parseFrontMatter(content: string) {
