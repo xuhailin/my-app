@@ -18,8 +18,13 @@ export class HomeComponent implements OnInit {
 
   loadArticles(): void {
     this.http.get('assets/data/topic.json')
-      .subscribe((data) => {
-        this.articles = data;
+      .subscribe((data: any[]) => {
+        const keys = Object.keys(data).slice(0, 5);
+        const newData = {};
+        keys.forEach((key) => {
+          newData[key] = data[key];
+        });
+        this.articles = newData;
       });
   }
 }

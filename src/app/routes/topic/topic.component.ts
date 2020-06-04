@@ -26,7 +26,7 @@ export class TopicComponent implements OnInit {
   }
 
   loadArticle(id: string) {
-    fetch(`assets/data/articles/${id}.md`)
+    fetch(`./assets/data/articles/${id}.md`)
         .then(data => data.text())
         .then (text => {
           const content = text.trim();
@@ -35,6 +35,22 @@ export class TopicComponent implements OnInit {
   }
 
   parseFrontMatter(content: string) {
+// Override function
+    const tokenizer = {
+      codespan(src) {
+        const match = src.match(/\$+([^\$\n]+?)\$+/);
+        if (match) {
+          return {
+            type: 'codespan',
+            raw: match[0],
+            text: match[1].trim()
+          };
+        }
+        return false;
+      }
+    };
+  //  marked.use({ tokenizer });
+    console.log(marked);
     this.articleContent = marked(content);
   }
 }
