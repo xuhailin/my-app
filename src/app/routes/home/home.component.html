@@ -1,12 +1,5 @@
 <div class="article-box">
-  <header class="popular-header header-card white-underline-links">
-    <h2 class="header-card-title">
-      Popular <br>this <br>month
-    </h2>
-    <p class="header-card-sponsor">小饼干<br>
-    </p>
-  </header>
-  <div class="article-wrapper">
+  <!-- <div class="article-recommond">
     <div class="article" *ngFor="let item of articles | keyvalue">
       <div class="article-publication-meta">
           Article
@@ -24,5 +17,29 @@
         <strong *ngFor="let tag of item.value.tags">{{tag}}</strong>
       </div>
     </div>
+  </div> -->
+
+  <div class="article-recent">
+    <div class="article" *ngFor="let item of articles | keyvalue">
+      <div class="article-publication-meta">
+          Article
+        <span class="time">
+          {{ item.key }}
+        </span>
+      </div>
+      <div class="article-title" [routerLink]="['/topic', item.key]">
+        <h2>{{ item.value.title }}</h2>
+      </div>
+      <div class="article-content">
+        <h5>{{ item.value.description }}</h5>
+      </div>
+      <div class="article-footer">
+        <strong *ngFor="let tag of item.value.tags">{{tag}}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="effect-css">
+    <show-css></show-css>
   </div>
 </div>

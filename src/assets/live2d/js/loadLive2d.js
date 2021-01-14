@@ -15,7 +15,8 @@ var getRandomModelName = function() {
   }];
   var index = Math.floor(Math.random() * models.length);
   index = Math.min(index, models.length - 1);
-  return models[index];
+  // return models[index];
+  return models[1];
 };
 
 window.onload = function () {

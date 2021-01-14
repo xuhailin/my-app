@@ -1,8 +1,17 @@
 <div class="layout-header">
   <div class="header-title">
-    <span>小饼干</span>
+    <svg width="140" height="60" xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs> 
+        <linearGradient id="linear"  x1="100%" x2="0%" y1="100%"  y2="100%"> 
+          <stop offset="0%" stop-color="#ff8a00"/>
+          <stop offset="100%" stop-color="#e52e71"/>
+        </linearGradient> 
+        </defs>
+      <rect width="140" height="60" stroke="url(#linear)"></rect>
+    </svg>
+    <div class="text">徐海林</div>
   </div>
-  <nav mat-tab-nav-bar class="header-tabs">
+  <!-- <nav mat-tab-nav-bar class="header-tabs">
     <a mat-tab-link
        *ngFor="let link of navLinks"
        [routerLink]="link.path"
@@ -11,7 +20,7 @@
        [active]="rla.isActive">
       {{link.label}}
     </a>
-  </nav>
+  </nav> -->
 </div>
 <div class="layout-header-bg">
     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="500px" height="500px" version="1.1">

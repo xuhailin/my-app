@@ -15,9 +15,16 @@ $topic-height: 350px;
     transition: all 0.2s;
     position: relative;
     user-select: none;
-    &-wrapper {
+    &-recent {
       display: flex;
-      padding: 15px;
+      padding: 30px;
+      background: rgb(255 255 255 / 0.3);
+      border-radius: 10px;
+      position: relative;
+      &::before {
+        content: '最近文章';
+        position: absolute;
+      }
     }
     &:not(:first-child) {
       margin-left: -140px;
@@ -62,6 +69,7 @@ $topic-height: 350px;
 
   .article-box {
     display: flex;
+    flex-direction: column;
   }
 
   .header-card {

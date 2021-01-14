@@ -4,11 +4,13 @@ import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../material.module';
 import { HtmlPipe } from './pipes/html.pipe';
 import { ShapeDirective } from './directives/shape.directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const MODULES = [
   CommonModule,
   RouterModule,
   MaterialModule,
+  FontAwesomeModule,
 ];
 
 const COMPONENTS = [
