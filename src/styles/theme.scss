@@ -4,28 +4,28 @@
 
 
 $my-app-primary: mat-palette($mat-indigo);
-$my-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$my-app-accent: mat-palette($mat-pink, A200, A100, A400);
 
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
 
 @function my-mat-light-theme-foreground($color) {
-    @return (
-        base:              $color,
-        divider:           $white-12-opacity,
-        dividers:          $white-12-opacity,
-        disabled:          rgba($color, 0.38),
-        disabled-button:   rgba($color, 0.38),
-        disabled-text:     rgba($color, 0.38),
-        hint-text:         rgba($color, 0.38),
-        secondary-text:    $sub-text-color,
-        icon:              rgba($color, 0.54),
-        icons:             rgba($color, 0.54),
-        text:              $text-color,
-        slider-off:        rgba($color, 0.26),
-        slider-off-active: rgba($color, 0.38),
-        slider-min:        rgba($color, 0.38)
-    );
-};
+  @return (base: $color,
+    divider: $white-12-opacity,
+    dividers: $white-12-opacity,
+    disabled: rgba($color, 0.38),
+    disabled-button: rgba($color, 0.38),
+    disabled-text: rgba($color, 0.38),
+    hint-text: rgba($color, 0.38),
+    secondary-text: $sub-text-color,
+    icon: rgba($color, 0.54),
+    icons: rgba($color, 0.54),
+    text: $text-color,
+    slider-off: rgba($color, 0.26),
+    slider-off-active: rgba($color, 0.38),
+    slider-min: rgba($color, 0.38));
+}
+
+;
 
 $white-foreground: my-mat-light-theme-foreground(white);
 $my-app-theme-custom: map-merge($my-app-theme, (foreground: $white-foreground));
@@ -34,5 +34,33 @@ $my-app-theme-custom: map-merge($my-app-theme, (foreground: $white-foreground));
 
 /* For the non-Angular Material items */
 body {
-    color: $text-color,;
+  color: $text-color;
+}
+
+.my-divider {
+  clear: both;
+  text-align: center;
+  display: flex;
+  position: relative;
+  font-size: 12px;
+
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    flex: 1;
+    height: 1px;
+    align-self: center;
+  }
+
+  &::before {
+    background-image: linear-gradient(to top left, #ff8a00, #e52e71);
+    margin-right: 12px;
+  }
+
+  &::after {
+    background-image: linear-gradient(to top right, #ff8a00, #e52e71);
+    margin-left: 12px;
+  }
+
 }

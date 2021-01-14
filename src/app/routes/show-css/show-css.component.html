@@ -1,13 +1,7 @@
 
-<div id="showNav" (click)="showNav()">
-    <fa-icon [icon]="showNavIcon"></fa-icon>
-</div>
+
 <div id="showCss">
-    <div class="showEffectNav">
-        <span class="levels" (click)="goBack()">查询界面</span>
-        <span class="text">/Css效果展示界面</span>
-    </div>
-    <div class="separate"><span> 背景与边框 </span></div>
+    <div class="my-divider">背景与边框</div>
     <ul class="effect-modules" id="bgAndBorder">
         <li class="effect-module">
             <div class="effect-content">
@@ -419,4 +413,36 @@
           </div>
       </li>
     </ul>
+</div>
+
+<div id="showCss">
+    <ng-container *ngFor="let item of codes | keyvalue">
+      <div class="my-divider"> {{ item.key }} </div>
+      <div class="effect-modules">
+        <div class="effect-module" *ngFor="let code of item.value | keyvalue">
+            <div class="title">{{ code.key }}</div>
+            <div ></div>
+            <div class="effect-content">
+                <div class="effect-show">
+                    <div>aaa</div>
+                    <div>bbb</div>
+                </div>
+                <style>
+                </style>
+                <iframe>
+                  <html>
+                    <head>
+                      <style>
+                        /* {{ code.code.value.style}} */
+                      </style>
+                    </head>
+                    <body [innerHtml]="code.value.html">
+                    </body>
+                  </html>
+                </iframe>
+                <div class="effect-title" (click)="viewTopicById('bgAndBorder')">半透明边框</div>
+            </div>
+        </div>
+      </div>
+   </ng-container>
 </div>
