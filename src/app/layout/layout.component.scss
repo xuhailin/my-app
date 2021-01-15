@@ -4,8 +4,9 @@
     min-width: 1px;
     min-height: calc(100vh - 80px);
     > div.wrapper {
-      padding-top: 115px;
+      padding: 115px 0;
       margin: 0 310px;
+      width: calc(100vw - 400px);
     }
   }
 }

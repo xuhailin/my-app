@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import {SharedModule} from '../../shared/shared.module';
 import {HomeRoutingModule} from './home-routing.module';
-import { ShowCssComponent } from 'src/app/routes/show-css/show-css.component';
+import { ShowCssComponent } from '../show-css/show-css.component';
+import {effectComponents} from '../show-css/effects';
 
 @NgModule({
   imports: [
@@ -11,7 +12,11 @@ import { ShowCssComponent } from 'src/app/routes/show-css/show-css.component';
   ],
   declarations: [
     HomeComponent,
-    ShowCssComponent
+    ShowCssComponent,
+    ...effectComponents
+  ],
+  entryComponents: [
+    ...effectComponents
   ],
   exports: [
     HomeComponent,

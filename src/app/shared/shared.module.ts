@@ -5,6 +5,7 @@ import {MaterialModule} from '../material.module';
 import { HtmlPipe } from './pipes/html.pipe';
 import { ShapeDirective } from './directives/shape.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EffectTagDirective } from './directives/effect-tag.directive';
 
 const MODULES = [
   CommonModule,
@@ -16,6 +17,7 @@ const MODULES = [
 const COMPONENTS = [
   ShapeDirective,
   HtmlPipe,
+  EffectTagDirective,
 ];
 @NgModule({
   imports: [

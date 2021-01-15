@@ -48,10 +48,19 @@ export class ShowCssComponent implements OnInit {
   }
 
 
-  loadCodes(): void {
-    this.http.get('assets/data/effect.json')
-      .subscribe((data: any) => {
-        this.codes = data;
-      });
+  async loadCodes(): Promise<void> {
+   const data =  await this.http.get('assets/data/effect.json')
+     .toPromise();
+   const result = {};
+   Object.keys(data)
+     .forEach(async (key) => {
+       result[key] = {
+         title: data[key],
+         components: [],
+       };
+       result[key].components = await import(`./effects/${key}.component`)
+        .then((component) => component.default);
+     })
+   this.codes = result;
   }
 }
