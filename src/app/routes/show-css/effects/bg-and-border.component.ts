@@ -302,7 +302,7 @@ export class BgAndBorder7Component {
   static title = "复杂背景图案"
 }
 
-export default [
+export const bgAndBorderComponents = [
   BgAndBorder1Component,
   BgAndBorder2Component,
   BgAndBorder3Component,
@@ -311,3 +311,5 @@ export default [
   BgAndBorder6Component,
   BgAndBorder7Component
 ];
+
+export default bgAndBorderComponents;

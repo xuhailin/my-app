@@ -303,7 +303,7 @@ export class Shape6Component {
   static title = "饼图"
 }
 
-export default [
+export const shapeComponents = [
   Shape1Component,
   Shape2Component,
   Shape3Component,
@@ -311,3 +311,5 @@ export default [
   Shape5Component,
   Shape6Component,
 ];
+
+export default shapeComponents;

@@ -32,16 +32,53 @@
       padding: 0px;
       gap: 30px;
       flex-wrap: wrap;
-      margin-top: 35px;
     }
 
     &-module {
       padding: 4px;
-      @include background;
+      position: relative;
       display: flex;
       min-width: 200px;
       min-height: 250px;
       border-radius: 10px;
+      $clip-size: 4px;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        @include background;
+        clip-path: polygon(0 0);
+      }
+
+      &:hover::before,
+      &:hover::after {
+        animation: clipMe 8s linear infinite;
+      }
+
+      &:hover::after {
+        animation-delay: 4s;
+      }
+
+      $clip-size: 4px;
+      @keyframes clipMe {
+        0%, 100%{
+          clip-path: polygon(0% 0%, 100% 0, 100% 4px, 0 4px);
+        }
+        25% {
+          clip-path: polygon(0 0, 0 4px, 4px 100%, 0% 100%);
+        }
+        50% {
+          clip-path: polygon(0% calc(100% - 4px), 100% calc(100% - 4px), 100% 100%, 0% 100%);
+        }
+        75% {
+          clip-path: polygon(calc(100% - 4px) 0%, 100% 0%, 100% 100%, calc(100% - 4px) 100%);
+        }
+      }
     }
 
     &-content {
@@ -52,7 +89,6 @@
       flex-direction: column;
       gap: 10px;
       background: #100e17;
-      border-radius: 8px;
     }
 
     &-title {

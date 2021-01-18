@@ -187,10 +187,12 @@ export class Visual5Component {
   static title = "折角效果"
 }
 
-export default [
+export const visualComponents = [
   Visual1Component,
   Visual2Component,
   Visual3Component,
   Visual4Component,
   Visual5Component,
 ];
+
+export default visualComponents;
