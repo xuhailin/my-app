@@ -1,5 +1,6 @@
 {
   "bg-and-border": "背景与边框",
   "shape": "形状",
-  "visual": "视觉效果"
+  "visual": "视觉效果",
+  "clip-path": "切割路径"
 }
