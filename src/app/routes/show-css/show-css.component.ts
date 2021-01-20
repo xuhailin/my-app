@@ -55,7 +55,7 @@ export class ShowCssComponent implements OnInit {
    Object.keys(data)
      .forEach(async (key) => {
        result[key] = {
-         title: data[key],
+         title: data[key].title,
          components: [],
        };
        result[key].components = await import(`./effects/${key}.component`)
