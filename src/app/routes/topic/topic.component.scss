@@ -1,0 +1,28 @@
+.article-wrapper {
+  font-size: 1.2rem;
+  overflow-wrap: break-word;
+  border-radius: 8px;
+  padding: 20px;
+
+
+  ::ng-deep {
+   h1, h2, h3, h4, h5, h6 {
+      font-weight: 800;
+      line-height: 1.1;
+   }
+   h1, h2, h3, h4, h5, h6, p, pre, ul, table {
+      margin: 0 0 1.5rem;
+    }
+    code {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      padding: .1rem .3rem .2rem;
+      border-radius: .2rem;
+      background: #d4d4d4;
+      color: #000;
+    }
+  }
+
+}

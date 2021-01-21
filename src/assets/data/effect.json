@@ -9,7 +9,13 @@
     "title": "视觉效果"
   },
   "clip-path": {
-    "title": "裁剪路径动画",
+    "title": "clip-path",
+    "herfs": [
+      "https://css-tricks.com/animating-with-clip-path/"
+    ]
+  },
+  "mask": {
+    "title": "mask",
     "herfs": [
       "https://css-tricks.com/animating-with-clip-path/"
     ]

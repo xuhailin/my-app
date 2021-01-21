@@ -35,6 +35,7 @@ $my-app-theme-custom: map-merge($my-app-theme, (foreground: $white-foreground));
 /* For the non-Angular Material items */
 body {
   color: $text-color;
+  line-height: 1.7;
 }
 
 .my-divider {
