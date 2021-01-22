@@ -1,0 +1,156 @@
+:host {
+  .bg-and-border-1 {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    background: #000;
+    background-clip: padding-box;
+    width: 150px;
+    height: 100px;
+    text-align: center;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .bg-and-border-5 {
+    position: relative;
+    margin: 0 auto;
+    border: 1em solid transparent;
+    padding: 1em;
+    height: 100px;
+    background-position: 0 0;
+    background: linear-gradient(#F4F1BB, #F4F1BB) padding-box,
+      repeating-linear-gradient(-45deg, #ED6A5A 0, #ED6A5A 25%, #E6EBE0 0, #E6EBE0 50%) 0/.6em .6em;
+    animation: ants 12s linear infinite;
+
+    .example {
+      position: relative;
+      margin: 0 auto;
+      border: 1em solid transparent;
+      padding: 1em;
+      box-sizing: border-box;
+      height: 100%;
+      background: linear-gradient(#E6EBE0, #E6EBE0) padding-box,
+        repeating-linear-gradient(-45deg, #ED6A5A 0, #ED6A5A 12.5%, transparent 0, transparent 25%, #5CA4A9 0, #5CA4A9 37.5%, transparent 0, transparent 50%) 0/5em 5em;
+    }
+
+    @keyframes ants {
+      to {
+        background-position: 100%;
+      }
+    }
+  }
+
+
+  .bg-and-border-6 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    /*
+     linear-gradient(c1 b1,c2 b2)
+     b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就相当于没了过渡区
+     如果色标的位置比整个列表中在它之前的色标位置值都要小，那么会被设置为他前面所有色标位置值得最大值
+   */
+    .example {
+
+      &-1,
+      &-2,
+      &-3,
+      &-4 {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+      }
+
+      &-1 {
+        background: linear-gradient(to right, #5CA4A9 33.3%, #ED6A5A 0, #ED6A5A 66.6%, #E6EBE0 0);
+        background-size: 45px 100%;
+      }
+
+      &-2 {
+        background: linear-gradient(#5CA4A9 33.3%, #ED6A5A 0, #ED6A5A 66.6%, #E6EBE0 0);
+        background-size: 100% 45px;
+        /*背景宽高，默认会重复，所以就是条纹了*/
+      }
+
+      &-3 {
+        /* background: linear-gradient(45deg,
+                    #5CA4A9 16.65%,#ED6A5A 0,
+                    #ED6A5A 33.3%,#E6EBE0 0,
+                    #E6EBE0 49.95%,#5CA4A9 0,
+                    #5CA4A9 66.6%, #ED6A5A 0,
+                    #ED6A5A 83.25%,#E6EBE0 0
+        );*/
+        /*background: repeating-linear-gradient(45deg,
+        #5CA4A9 0,#5CA4A9 16.65%,
+        #ED6A5A 0,#ED6A5A 33.33%,
+        #E6EBE0 0,#E6EBE0 49.98%);*/
+        background: repeating-linear-gradient(45deg, #ED6A5A 0, #ED6A5A 25%, #E6EBE0 0, #E6EBE0 50%);
+        background-size: 42.426406871px 42.426406871px;
+        /*宽度如果想要15px 则就是15px根号2*2 背景宽高，默认会重复，所以就是条纹了*/
+      }
+
+      /**
+      相似的条纹图案
+    */
+      &-4 {
+        background: #ED6A5A;
+        background-image: repeating-linear-gradient(30deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1) 15px, transparent 0, transparent 30px);
+      }
+    }
+  }
+
+  .bg-and-border-7 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .example {
+
+      &-1,
+      &-2,
+      &-3,
+      &-4 {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+      }
+
+      &-1 {
+        background: #E6EBE0;
+        background-image:
+          linear-gradient(90deg, rgba(237, 106, 90, 0.8) 50%, transparent 0),
+          linear-gradient(rgba(237, 106, 90, 0.8) 50%, transparent 0);
+        background-size: 30px 30px;
+      }
+
+      &-2 {
+        background: #ED6A5A;
+        background-image:
+          linear-gradient(#E6EBE0 2px, transparent 0),
+          linear-gradient(90deg, #E6EBE0 2px, transparent 0),
+          linear-gradient(hsla(0, 0%, 100%, .3) 1px, transparent 0),
+          linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px, transparent 0);
+        background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+      }
+
+      &-3 {
+        background: #ED6A5A;
+        background-image: radial-gradient(#E6EBE0 30%, transparent 0), radial-gradient(#E6EBE0 30%, transparent 0);
+        background-size: 30px 30px;
+        background-position: 0 0, 15px 15px;
+      }
+
+      &-4 {
+        background: #ED6A5A;
+        background-image:
+          linear-gradient(45deg, #E6EBE0 26%, transparent 0, transparent 75%, #E6EBE0 0),
+          linear-gradient(45deg, #E6EBE0 26%, transparent 0, transparent 75%, #E6EBE0 0);
+        background-size: 30px 30px;
+        background-position: 0 0, 15px 15px;
+      }
+    }
+  }
+}

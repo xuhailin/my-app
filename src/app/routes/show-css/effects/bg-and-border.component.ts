@@ -9,24 +9,11 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'bg-and-border-1',
   template: `
-    <div class="text">
+    <div class="bg-and-border-1">
       <span>Can I haz semi-transparent borders? Pretty please?</span>
     </div>
   `,
-  styles: [
-    `:host .text {
-      border: 8px solid rgba(255, 255, 255, 0.3);
-      background: #000;
-      background-clip: padding-box;
-      width: 150px;
-      height: 100px;
-      text-align: center;
-      padding: 5px;
-      display: flex;
-      align-items: center;
-   }
-    `
-  ],
+  styleUrls: ['../styles/bg-and-border.component.scss'],
 })
 export class BgAndBorder1Component {
   static title = "半透明边框"
@@ -35,6 +22,7 @@ export class BgAndBorder1Component {
 @Component({
   selector: 'bg-and-border-2',
   template: `<div></div>`,
+  styleUrls: ['../styles/bg-and-border.component.scss'],
   styles: [
     `
      :host div {
@@ -56,6 +44,7 @@ export class BgAndBorder2Component {
 @Component({
   selector: 'bg-and-border-3',
   template: `<div></div>`,
+  styleUrls: ['../styles/bg-and-border.component.scss'],
   styles: [
     `
     :host div {
@@ -80,6 +69,7 @@ export class BgAndBorder3Component {
 @Component({
   selector: 'bg-and-border-4',
   template: `<div></div>`,
+  styleUrls: ['../styles/bg-and-border.component.scss'],
   styles: [
     `
     :host div {
@@ -102,45 +92,12 @@ export class BgAndBorder4Component {
 
 @Component({
   selector: 'bg-and-border-5',
-  template: `<div id="borderImage-2">
-  <div id="borderImage-1">
-  </div>
-</div>`,
-  styles: [
-    `
-    #borderImage {
-
-      &-1,
-      &-2 {
-        position: relative;
-        margin: 0 auto;
-        border: 1em solid transparent;
-        height: 100%;
-        padding: 1em;
-      }
-    
-      &-1 {
-        width: calc(95% - 1em);
-        background: linear-gradient(#E6EBE0, #E6EBE0) padding-box,
-          repeating-linear-gradient(-45deg, #ED6A5A 0, #ED6A5A 12.5%, transparent 0, transparent 25%, #5CA4A9 0, #5CA4A9 37.5%, transparent 0, transparent 50%) 0/5em 5em;
-      }
-    
-      &-2 {
-        width: calc(100% - 1px);
-        background: linear-gradient(#F4F1BB, #F4F1BB) padding-box,
-          repeating-linear-gradient(-45deg, #ED6A5A 0, #ED6A5A 25%, #E6EBE0 0, #E6EBE0 50%) 0/.6em .6em;
-        animation: ants 12s linear infinite;
-        /*infinite 动画连续播放*/
-      }
-    }
-
-    @keyframes ants {
-      to {
-        background-position: 100%
-      }
-    }
-    `
-  ],
+  template: `
+   <div class="bg-and-border-5">
+    <div class="example">
+    </div>
+  </div>`,
+  styleUrls: ['../styles/bg-and-border.component.scss'],
 })
 export class BgAndBorder5Component {
   static title = "连续的图像边框"
@@ -148,82 +105,18 @@ export class BgAndBorder5Component {
 
 @Component({
   selector: 'bg-and-border-6',
-  template: ` <div class="effect-show" style="display: inline-block">
-  <div id="bgStripe-C">
-  </div>
-
-</div>
-<div class="effect-show" style="display: inline-block">
-  <div id="bgStripe-R">
-  </div>
-</div>
-<div class="effect-show" style="display: inline-block">
-  <div id="bgStripe-S">
-  </div>
-</div>
-<div class="effect-show" style="display: inline-block">
-  <div id="bgStripe-L">
-  </div>
-</div>`,
-  styles: [
-    `
-    /*
-
-linear-gradient(c1 b1,c2 b2)
-b1和b2是色标比例，越小产生的过度区域就越小 大于等于1就相当于没了过渡区
-
-如果色标的位置比整个列表中在它之前的色标位置值都要小，那么会被设置为他前面所有色标位置值得最大值
-*/
-#bgStripe {
-
-  &-R,
-  &-C,
-  &-S,
-  &-L {
-    position: relative;
-    width: 95%;
-    height: 100%;
-    margin: 0 auto;
-  }
-
-  &-R {
-    background: linear-gradient(to right, #5CA4A9 33.3%, #ED6A5A 0, #ED6A5A 66.6%, #E6EBE0 0);
-    background-size: 45px 100%;
-  }
-
-  &-C {
-    background: linear-gradient(#5CA4A9 33.3%, #ED6A5A 0, #ED6A5A 66.6%, #E6EBE0 0);
-    background-size: 100% 45px;
-    /*背景宽高，默认会重复，所以就是条纹了*/
-  }
-
-  &-S {
-    /* background: linear-gradient(45deg,
-                    #5CA4A9 16.65%,#ED6A5A 0,
-                    #ED6A5A 33.3%,#E6EBE0 0,
-                    #E6EBE0 49.95%,#5CA4A9 0,
-                    #5CA4A9 66.6%, #ED6A5A 0,
-                    #ED6A5A 83.25%,#E6EBE0 0
-        );*/
-    /*background: repeating-linear-gradient(45deg,
-        #5CA4A9 0,#5CA4A9 16.65%,
-        #ED6A5A 0,#ED6A5A 33.33%,
-        #E6EBE0 0,#E6EBE0 49.98%);*/
-    background: repeating-linear-gradient(45deg, #ED6A5A 0, #ED6A5A 25%, #E6EBE0 0, #E6EBE0 50%);
-    background-size: 42.426406871px 42.426406871px;
-    /*宽度如果想要15px 则就是15px根号2*2 背景宽高，默认会重复，所以就是条纹了*/
-  }
-
-  /**
-      相似的条纹图案
-    */
-  &-L {
-    background: #ED6A5A;
-    background-image: repeating-linear-gradient(30deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1) 15px, transparent 0, transparent 30px);
-  }
-}
-    `
-  ],
+  template: `
+   <div class="bg-and-border-6">
+      <div class="example-1">
+      </div>
+      <div class="example-2">
+      </div>
+      <div class="example-3">
+      </div>
+      <div class="example-4">
+      </div>
+    </div>`,
+  styleUrls: ['../styles/bg-and-border.component.scss'],
 })
 export class BgAndBorder6Component {
   static title = "条纹背景"
@@ -231,72 +124,18 @@ export class BgAndBorder6Component {
 
 @Component({
   selector: 'bg-and-border-7',
-  template: `<div class="effect-show" style="display: inline-block">
-  <!--http://lea.verou.me/css3patterns-->
-  <!--http://bytesizematters.com 文件大小-->
-  <div id="advancedBg-1">
-  </div>
-</div>
-<div class="effect-show" style="display: inline-block">
-  <div id="advancedBg-2">
-  </div>
-</div>
-<div class="effect-show" style="display: inline-block">
-  <div id="advancedBg-3">
-  </div>
-</div>
-<div class="effect-show" style="display: inline-block">
-  <div id="advancedBg-4">
-  </div>
-</div>`,
-  styles: [
-    `
-    #advancedBg {
-
-      &-1,
-      &-2,
-      &-3,
-      &-4 {
-        position: relative;
-        width: 95%;
-        height: 100%;
-        margin: 0 auto;
-      }
-    
-      &-1 {
-        background: #E6EBE0;
-        background-image: linear-gradient(90deg, rgba(237, 106, 90, 0.8) 50%, transparent 0), linear-gradient(rgba(237, 106, 90, 0.8) 50%, transparent 0);
-        background-size: 30px 30px;
-      }
-    
-      &-2 {
-        background: #ED6A5A;
-        background-image:
-          linear-gradient(#E6EBE0 2px, transparent 0),
-          linear-gradient(90deg, #E6EBE0 2px, transparent 0),
-          linear-gradient(hsla(0, 0%, 100%, .3) 1px, transparent 0),
-          linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px, transparent 0);
-        background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
-      }
-    
-      &-3 {
-        background: #ED6A5A;
-        background-image: radial-gradient(#E6EBE0 30%, transparent 0), radial-gradient(#E6EBE0 30%, transparent 0);
-        background-size: 30px 30px;
-        background-position: 0 0, 15px 15px;
-      }
-    
-      &-4 {
-        background: #ED6A5A;
-        background-image:
-          linear-gradient(45deg, #E6EBE0 26%, transparent 0, transparent 75%, #E6EBE0 0),
-          linear-gradient(45deg, #E6EBE0 26%, transparent 0, transparent 75%, #E6EBE0 0);
-        background-size: 30px 30px;
-        background-position: 0 0, 15px 15px;
-      }
-    }
-    `
-  ],
+  template: `
+   <div class="bg-and-border-7">
+     <div class="example-1">
+     </div>
+     <div class="example-2">
+    </div>
+    <div class="example-3">
+    </div>
+    <div class="example-4">
+    </div>
+  </div>`,
+  styleUrls: ['../styles/bg-and-border.component.scss'],
 })
 export class BgAndBorder7Component {
   static title = "复杂背景图案"
