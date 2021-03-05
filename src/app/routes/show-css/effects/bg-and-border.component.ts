@@ -26,7 +26,7 @@ export class BgAndBorder1Component {
   styles: [
     `
      :host div {
-      width: 160px;
+      width: 100px;
       height: 80px;
       top: 20px;
       position: relative;
@@ -48,8 +48,8 @@ export class BgAndBorder2Component {
   styles: [
     `
     :host div {
-      width: calc(100% - 1.3em);
-      height: calc(100% - 1.3em);
+      width: 100px;
+      height: 100px;
       position: relative;
       top: 0.6em;
       margin: 0px auto;
@@ -140,6 +140,7 @@ export class BgAndBorder6Component {
 export class BgAndBorder7Component {
   static title = "复杂背景图案"
 }
+
 
 export const bgAndBorderComponents = [
   BgAndBorder1Component,

@@ -1,0 +1,169 @@
+@import 'src/styles/variables.scss';
+
+:host {
+  #singleSideShadow {
+
+    &-1,
+    &-2,
+    &-3 {
+      width: 46%;
+      height: 46%;
+      margin: 2%;
+      background: #ED6A5A;
+      float: left;
+    }
+
+    &-1 {
+      box-shadow: 0px 6px 6px -3px #555;
+      /*第四个参数会根据你指定的值去扩大或者缩小投影的尺寸*/
+    }
+
+    &-2 {
+      box-shadow: 6px 6px 6px -3px #555;
+    }
+
+    &-3 {
+      box-shadow: 6px 0px 6px -3px #555, -6px 0px 6px -3px #555;
+    }
+  }
+
+  #irregular {
+    border: 12px dotted #ED6A5A;
+    filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.3));
+    text-align: center;
+    line-height: 100px;
+    font-size: 20px;
+  }
+
+  /*
+  滤镜
+  #dyeingEffect{
+    transition: .5s filter;
+    filter:sepia(1) saturate(4) hue-rotate(295deg);
+  }
+
+  #dyeingEffect:hover,#dyeingEffect:focus{
+    filter:none;
+  }*/
+
+  /*混合模式*/
+  #dyeingEffect {
+    background-size: cover;
+    background-image: url("../../../../assets/images/search/effectImg1.png");
+    background-color: #ED6A5A;
+    background-blend-mode: luminosity;
+    transition: 1s background-color;
+    width: 100%;
+    height: 100px;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+  #woolGlassEffect {
+    position: relative;
+    background-image: url("../../../../assets/images/search/effectImg1.png");
+    background-size: cover;
+    width: 100%;
+    height: 100px;
+
+    >div {
+      position: relative;
+      width: 80%;
+      height: 80%;
+      top: 10%;
+      margin: auto;
+      display: block;
+      color: white;
+      padding: 1em;
+      background: rgba(230, 235, 224, 0.3);
+      overflow: hidden;
+      z-index: 0;
+  
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-image: url("../../../../assets/images/search/effectImg1.png");
+        background-size: cover;
+        z-index: -1;
+        filter: blur(5px);
+        margin: -10px;
+      }
+    }
+  }
+
+  #angleEffect {
+    background: #ED6A5A;
+    background:
+      linear-gradient(-150deg, transparent 1.4em, #ED6A5A 0);
+    /*2/根号2 得来的1.4*/
+    border-radius: .5em;
+    width: 100%;
+    height: 100px;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0.4)) no-repeat 100% 0;
+      width: 1.73em;
+      height: 3em;
+      transform: translateY(-1.3em) rotate(-30deg);
+      transform-origin: bottom right;
+      border-bottom-left-radius: inherit;
+      box-shadow: -.2em .2em .3em -.1em rgba(0, 0, 0, .15);
+    }
+  }
+
+  .visual-6 {
+    width: 150px;
+    height: 150px;
+    margin: 10px auto 0;
+    animation: visual-6 16s linear infinite;
+    svg { display: block; overflow: visible; }
+    path { fill: none; }
+    text {fill: #ED6A5A; letter-spacing: 5px; }
+    @keyframes visual-6{ /*其父元素逆向旋转所以首先要抵消掉旋转的360度*/
+      0%{ transform:rotate(0deg); }
+      100%{ transform:rotate(-720deg); }
+    }
+  }
+
+  .visual-7 {
+    padding: 20px;
+    .header {
+      background: url(../../../../assets/images/icon.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      justify-content: center;
+      display: flex;
+      animation: visual-7 1s linear infinite;
+      filter: contrast(0.9);
+    }
+
+    .header-title {
+      mix-blend-mode: darken;
+      font-weight: bold;
+      width: 150px;
+      height: 150px;
+      background-color: #a4a8a9;
+      border-radius: 50%;
+    }
+
+    svg {
+      display: block;
+      overflow: visible;
+    }
+  }
+}
