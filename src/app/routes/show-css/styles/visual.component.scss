@@ -81,7 +81,7 @@
       background: rgba(230, 235, 224, 0.3);
       overflow: hidden;
       z-index: 0;
-  
+
       &:before {
         content: '';
         position: absolute;
@@ -128,17 +128,39 @@
     height: 150px;
     margin: 10px auto 0;
     animation: visual-6 16s linear infinite;
-    svg { display: block; overflow: visible; }
-    path { fill: none; }
-    text {fill: #ED6A5A; letter-spacing: 5px; }
-    @keyframes visual-6{ /*其父元素逆向旋转所以首先要抵消掉旋转的360度*/
-      0%{ transform:rotate(0deg); }
-      100%{ transform:rotate(-720deg); }
+
+    svg {
+      display: block;
+      overflow: visible;
+    }
+
+    path {
+      fill: none;
+    }
+
+    text {
+      fill: #ED6A5A;
+      letter-spacing: 5px;
+    }
+
+    @keyframes visual-6 {
+
+      /*其父元素逆向旋转所以首先要抵消掉旋转的360度*/
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(-720deg);
+      }
     }
   }
 
   .visual-7 {
     padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+
     .header {
       background: url(../../../../assets/images/icon.png);
       background-repeat: no-repeat;
@@ -153,17 +175,103 @@
     }
 
     .header-title {
-      mix-blend-mode: darken;
+      mix-blend-mode: overlay;
       font-weight: bold;
       width: 150px;
       height: 150px;
-      background-color: #a4a8a9;
+      background-color: #fff;
       border-radius: 50%;
     }
 
     svg {
       display: block;
       overflow: visible;
+    }
+  }
+
+  .visual-8 {
+    .loading-text-1 {
+      font-family: Consolas, Monaco, monospace;
+      color: #ED6A5A;
+      font-weight: bold;
+      width: 11ch;
+      animation: loading-text-typing 3s steps(11) infinite,
+        loading-text-caret 1s steps(1) infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 1px solid;
+    }
+
+    @keyframes loading-text-typing {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes loading-text-caret {
+      50% {
+        border-color: transparent;
+      }
+    }
+  }
+
+  .loading-text-2 {
+    font-family: Consolas, Monaco, monospace;
+    color: #000;
+    font-size: 30px;
+    position: relative;
+    text {
+      fill: currentColor;
+      letter-spacing: 3px;
+    }
+    svg { 
+      overflow: visible;
+      position: absolute;
+    }
+    use {
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linejoin: round;
+    }
+    // 1
+    // -webkit-text-stroke: 1px #fff;
+    // -webkit-text-fill-color: transparent;
+    // color: #fff;
+    // 2
+    // text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+    .text-mask {
+      position: absolute;
+      top: -6px;
+      letter-spacing: 3px;
+      animation: loading-text-changed 5s infinite;
+    }
+    @mixin loading-position($left, $right) {
+      background: linear-gradient(to right, #fff $left, transparent 0, transparent $right, #fff 0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes loading-text-changed {
+      0% {
+        @include loading-position(0, 21px);
+      }
+      16% {
+        @include loading-position(21px, 40px);
+      }
+      32% {
+        @include loading-position(40px, 62px);
+      }
+      48% {
+        @include loading-position(62px, 84px);
+      }
+      64% {
+        @include loading-position(84px, 104px);
+      }
+      80% {
+        @include loading-position(104px, 125px);
+      }
+      100% {
+        @include loading-position(125px, 145px);
+      }
     }
   }
 }

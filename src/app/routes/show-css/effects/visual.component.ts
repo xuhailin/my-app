@@ -101,7 +101,7 @@ export class Visual6Component {
       <div class="header-title">
         <svg viewBox="0 0 150 150">
           <path d="M -10, 80 A 86 86 0 0 0 160 80" fill="none" id="circle1" />
-          <text fill="#fff" style="letter-spacing: 4px;">
+          <text fill="#000" style="letter-spacing: 4px;">
             <textPath xlink:href="#circle1"> HAILIN'S HOMEPAGE </textPath>
           </text>
         </svg>
@@ -115,6 +115,48 @@ export class Visual7Component {
   // 借助svg实现
 }
 
+
+@Component({
+  selector: 'visual-8',
+  template: `
+  <div class="visual-8">
+    <div class="loading-text-1">loading...</div>
+    <div class="loading-text-2">
+      <svg width="2em" height="51px">
+        <use xlink:href="#visual-8-css" />
+        <text id="visual-8-css" y="1em">loading</text>
+      </svg>
+      <span class="text-mask">loading</span>
+    </div>
+  </div>`,
+  styleUrls: ['../styles/visual.component.scss'],
+})
+export class Visual8Component {
+  static title = "文字动画";
+  // 借助svg实现
+}
+
+
+@Component({
+  selector: 'visual-9',
+  template: `
+  <div class="visual-9">
+    <div class="loading-text-1">loading...</div>
+    <div class="loading-text-2">
+      <svg width="2em" height="51px">
+        <use xlink:href="#visual-8-css" />
+        <text id="visual-8-css" y="1em">loading</text>
+      </svg>
+      <span class="text-mask">loading</span>
+    </div>
+  </div>`,
+  styleUrls: ['../styles/visual.component.scss'],
+})
+export class Visual9Component {
+  static title = "实用贝塞尔曲线";
+  // 借助svg实现
+}
+
 export const visualComponents = [
   Visual1Component,
   Visual2Component,
@@ -123,6 +165,7 @@ export const visualComponents = [
   Visual5Component,
   Visual6Component,
   Visual7Component,
+  Visual8Component
 ];
 
 export default visualComponents;
