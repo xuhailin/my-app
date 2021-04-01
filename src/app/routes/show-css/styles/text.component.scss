@@ -1,0 +1,289 @@
+@import 'src/styles/variables.scss';
+
+// tips
+// -webkit-background-clip
+// background: linear-gradien
+// svg path
+// mask clip-path
+
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+
+:host {
+  position: relative;
+  display: block;
+  width: 220px;
+  height: 100%;
+}
+
+%loading-font {
+  font-family: Consolas, Monaco, monospace;
+  font-size: 48px;
+}
+
+/* text1 start */
+.text1 {
+  width: 8ch;
+  height: 70px;
+  animation: loading-text-typing 4s steps(8) infinite,
+    loading-text-caret 0.5s steps(1) infinite;
+  border-right: 1px solid;
+  overflow: hidden;
+  @extend %loading-font;
+}
+
+@keyframes loading-text-typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes loading-text-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* text1-end */
+
+/* text2-start */
+
+.text2 {
+  width: 100%;
+  height: 70px;
+  color: $primary-color;
+  position: relative;
+  @extend %loading-font;
+
+  text {
+    fill: currentColor;
+    letter-spacing: 3px;
+  }
+
+  svg {
+    overflow: visible;
+    position: absolute;
+  }
+
+  use {
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+
+  /*     // 1
+    // -webkit-text-stroke: 1px #fff;
+    // -webkit-text-fill-color: transparent;
+    // color: #fff;
+    // 2
+    // text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black; */
+  @mixin text-loading-position($left, $right) {
+    background: linear-gradient(to right,
+      #fff calc(#{$left}),
+      transparent 0,
+      transparent calc(#{$right}),
+      #fff 0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  $w: 100% / 7;
+
+  // 动画执行完了闪烁问题处理，因为执行完回回归到动画本身的状态
+  .text-mask {
+    position: absolute;
+    top: -11px;
+    left: 0.5px;
+    letter-spacing: 3px;
+    @include text-loading-position($w * 7, $w * 8);
+    animation: text-loading-text-changed 4s infinite;
+  }
+
+  @keyframes text-loading-text-changed {
+    #{$w} {
+      @include text-loading-position(0, $w);
+    }
+    #{$w * 2} {
+      @include text-loading-position($w, $w * 2);
+    }
+
+    #{$w * 3} {
+      @include text-loading-position($w * 2, $w * 3);
+    }
+
+    #{$w * 4} {
+      @include text-loading-position($w * 3, $w * 4);
+    }
+
+    #{$w * 5} {
+      @include text-loading-position($w * 4, $w * 5);
+    }
+
+    #{$w * 6} {
+      @include text-loading-position($w * 5, $w * 6);
+    }
+    #{$w * 7} {
+      @include text-loading-position($w * 6, $w * 7);
+    }
+  }
+}
+
+.text3 {
+  display: flex;
+  @extend %loading-font;
+
+
+  span {
+    color: transparent;
+    text-shadow: 0 0 0 #f0e4d7;
+
+    &:nth-of-type(n) {
+      text-shadow: 0 0 0 #f0e4d7;
+      animation: text-shadow-loading 4s linear infinite;
+    }
+
+    $times: 0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7;
+
+    @each $t in $times {
+      &:nth-of-type(#{$t}) {
+        animation-delay: $t * 0.5s;
+      }
+    }
+  }
+
+  @keyframes text-shadow-loading {
+    from {
+      text-shadow: 0 0 1px #ff7171, 0 0 5px #ff7171, 0 0 10px #ff7171;
+    }
+  }
+}
+
+.text4 {
+  @extend %loading-font;
+  background: linear-gradient(to right, #f0e4d7, #f5c0c0, #ff7171, #9fd8df);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: colorful-text-loading 4s linear infinite;
+
+  @keyframes colorful-text-loading {
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+}
+
+
+.text5 {
+  position: relative;
+  @extend %loading-font;
+
+  &::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:
+      linear-gradient(-45deg, transparent 0, #ff7171 50%, transparent) 0 0 / 30% 80% no-repeat,
+      linear-gradient(-45deg, transparent 0, #fff 50%, transparent) 50% 20% / 30% 80% no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: light-text-loading 2s linear infinite;
+  }
+
+  @keyframes light-text-loading {
+    to {
+      background-position: 100% 0, 200% 0;
+    }
+  }
+}
+
+.text6 {
+  @extend %loading-font;
+  width: 130px;
+  height: 130px;
+  padding: 30px;
+  font-size: 14px;
+  animation: circle-text-loading 8s linear infinite;
+
+  svg {
+    display: block;
+    overflow: visible;
+  }
+
+  text {
+    letter-spacing: 10px;
+  }
+
+  @keyframes circle-text-loading {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.text7 {
+  @extend %loading-font;
+  font-family: Righteous;
+  position: relative;
+  filter: contrast(20);
+  //  background: #fff;
+  overflow: hidden;
+  font-weight: bold;
+
+
+  >span:nth-of-type(1) {
+    position: absolute;
+    left: 0;
+    animation: blur-text-1 4s linear alternate infinite;
+  }
+
+  >span:nth-of-type(2) {
+    animation: blur-text-2 4s linear alternate infinite;
+  }
+
+  @keyframes blur-text-1 {
+    0% {
+      filter: blur(0px) opacity(1);
+    }
+
+    50% {
+      filter: blur(5px) opacity(0.5);
+    }
+
+    100% {
+      filter: blur(0px) opacity(0);
+    }
+  }
+
+  @keyframes blur-text-2 {
+    0% {
+      filter: blur(5px) opacity(0);
+      letter-spacing: -18px;
+    }
+
+    30% {
+      filter: blur(5px) opacity(1);
+      letter-spacing: -15px;
+    }
+
+    50% {
+      filter: blur(5px);
+    }
+
+    100% {
+      filter: blur(0px);
+      letter-spacing: 5px;
+    }
+  }
+}

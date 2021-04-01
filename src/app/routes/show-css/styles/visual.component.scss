@@ -157,9 +157,25 @@
   }
 
   .visual-7 {
+    position: relative;
     padding: 20px;
     background: #fff;
     border-radius: 12px;
+
+    &::before {
+      content: '原图';
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 4px;
+      width: 50px;
+      height: 50px;
+      background: url(../../../../assets/images/icon.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: 1;
+      color: black;
+    }
 
     .header {
       background: url(../../../../assets/images/icon.png);
@@ -170,7 +186,6 @@
       border-radius: 50%;
       justify-content: center;
       display: flex;
-      animation: visual-7 1s linear infinite;
       filter: contrast(0.9);
     }
 
@@ -243,34 +258,34 @@
       position: absolute;
       top: -6px;
       letter-spacing: 3px;
-      animation: loading-text-changed 5s infinite;
+      animation: visual-loading-text-changed 5s infinite;
     }
-    @mixin loading-position($left, $right) {
+    @mixin visual-loading-position($left, $right) {
       background: linear-gradient(to right, #fff $left, transparent 0, transparent $right, #fff 0);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    @keyframes loading-text-changed {
+    @keyframes visual-loading-text-changed {
       0% {
-        @include loading-position(0, 21px);
+        @include visual-loading-position(0, 21px);
       }
       16% {
-        @include loading-position(21px, 40px);
+        @include visual-loading-position(21px, 40px);
       }
       32% {
-        @include loading-position(40px, 62px);
+        @include visual-loading-position(40px, 62px);
       }
       48% {
-        @include loading-position(62px, 84px);
+        @include visual-loading-position(62px, 84px);
       }
       64% {
-        @include loading-position(84px, 104px);
+        @include visual-loading-position(84px, 104px);
       }
       80% {
-        @include loading-position(104px, 125px);
+        @include visual-loading-position(104px, 125px);
       }
       100% {
-        @include loading-position(125px, 145px);
+        @include visual-loading-position(125px, 145px);
       }
     }
   }

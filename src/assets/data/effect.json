@@ -8,6 +8,9 @@
   "visual": {
     "title": "视觉效果"
   },
+  "text": {
+    "title": "文本效果"
+  },
   "clip-path": {
     "title": "clip-path",
     "herfs": [
