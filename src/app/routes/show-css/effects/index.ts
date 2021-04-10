@@ -4,6 +4,7 @@ import { shapeComponents } from './shape.component';
 import { clipPathComponents } from './clip-path.component';
 import { maskComponents } from './mask.component';
 import { textComponents } from './text.component';
+import canvasComponents from './canvas.component';
 
 export const effectComponents = [
   ...bgAndBorderComponents,
@@ -12,4 +13,5 @@ export const effectComponents = [
   ...clipPathComponents,
   ...maskComponents,
   ...textComponents,
+  ...canvasComponents
 ];
