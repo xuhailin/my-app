@@ -1,4 +1,3 @@
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
@@ -56,7 +55,7 @@ export class Canvas1Component implements AfterViewInit {
     const row =  this._height;
     const result = [];
     let index = 0;
-    let toRight = true;
+    let toRight = false;
 
     const calc = (i, j) => {
       const rgba = data.slice(index, index + 4);
@@ -65,7 +64,7 @@ export class Canvas1Component implements AfterViewInit {
       index += 4;
       toRight = !toRight;
     }
-    
+
     for (let i = 0; i< row; i++) {
       if (toRight) {
         for (let j = 0; j < column; j++) {
@@ -77,8 +76,6 @@ export class Canvas1Component implements AfterViewInit {
         }
       }
     }
-    
-   
     return result.join(',');
   }
 }
