@@ -4,14 +4,25 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
   selector: 'canvas-1',
   template: `
     <canvas #canvas></canvas>
+    <div class="btns">
+      <button mat-stroked-button color="primary" (click)="generator()">生成</button>
+      <button mat-stroked-button (click)="reset()">清空</button>
+    </div>
     <div #target></div>
     `,
   styles: [
     `:host {
       display: flex;
-      width: 500px;
+      width: 560px;
       gap: 20px;
-    }`
+    }
+    :host .btns {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    `
   ]
 })
 export class Canvas1Component implements AfterViewInit {
@@ -24,6 +35,15 @@ export class Canvas1Component implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this._startDraw();
+  }
+
+  public generator(): void {
+    this._drawBoxShadowImage();
+  }
+
+  public reset(): void {
+    const target = this.target.nativeElement;
+    target.style.boxShadow = '';
   }
 
   private _startDraw(): void {
@@ -39,20 +59,22 @@ export class Canvas1Component implements AfterViewInit {
     image.src = 'assets/images/icon.png';
     image.onload = (e) => {
       this._content.drawImage(image, 0, 0, this._width, this._height);
-      const imageData = this._content.getImageData(0, 0, this._width, this._height);
-      const data: Uint8ClampedArray = imageData.data;
-      const boxShadow = this._getBoxShadow(data);
-      const target = this.target.nativeElement;
-      target.style.width = '1px';
-      target.style.height = '1px';
-      target.style.boxShadow = boxShadow;
     };
   }
 
+  private _drawBoxShadowImage(): void {
+    const imageData = this._content.getImageData(0, 0, this._width, this._height);
+    const data: Uint8ClampedArray = imageData.data;
+    const boxShadow = this._getBoxShadow(data);
+    const target = this.target.nativeElement;
+    target.style.width = '1px';
+    target.style.height = '1px';
+    target.style.boxShadow = boxShadow;
+  }
 
   private _getBoxShadow(data: Uint8ClampedArray): string {
     const column = this._width;
-    const row =  this._height;
+    const row = this._height;
     const result = [];
     let index = 0;
     let toRight = false;
@@ -60,18 +82,18 @@ export class Canvas1Component implements AfterViewInit {
     const calc = (i, j) => {
       const rgba = data.slice(index, index + 4);
       rgba[3] = rgba[3] / 255;
-      result.push(`${j* 2}px ${i}px rgba(${rgba.join(',')})`)
+      result.push(`${j * 2}px ${i}px rgba(${rgba.join(',')})`)
       index += 4;
       toRight = !toRight;
     }
 
-    for (let i = 0; i< row; i++) {
+    for (let i = 0; i < row; i++) {
       if (toRight) {
         for (let j = 0; j < column; j++) {
           calc(i, j);
         }
       } else {
-        for (let j = column - 1; j >=0; j--) {
+        for (let j = column - 1; j >= 0; j--) {
           calc(i, j);
         }
       }

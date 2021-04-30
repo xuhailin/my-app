@@ -41,3 +41,8 @@ docker build -t ng-my-app .
 ```
 docker run -d -p 4200:4200 ng-my-app
 ```
+
+
+## TODO
+1. 滚动渲染
+2. 动画开关

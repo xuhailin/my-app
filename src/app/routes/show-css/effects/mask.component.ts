@@ -67,11 +67,11 @@ export class Mask6Component {
 
 export const maskComponents = [
   Mask1Component,
-  Mask2Component,
-  Mask3Component,
-  Mask4Component,
-  Mask5Component,
-  Mask6Component,
+  // Mask2Component,
+  // Mask3Component,
+  // Mask4Component,
+  // Mask5Component,
+  // Mask6Component,
 ];
 
 export default maskComponents;

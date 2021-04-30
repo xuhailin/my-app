@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { forkJoin, fromEvent, merge, Observable, of, zip } from 'rxjs';
+import { delay, filter, last, map, mergeMap, pluck, repeatWhen, take, takeLast, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'visual-1',
@@ -115,6 +117,93 @@ export class Visual7Component {
   // 借助svg实现
 }
 
+
+@Component({
+  selector: 'visual-8',
+  template: `
+  <div class="visual-8">
+    <div class="container" #target>
+      <div class="item">X</div>
+      <div class="item">H</div>
+      <div class="item">L</div>
+      <div class="item">A</div>
+    </div>
+  </div>`,
+  styleUrls: ['../styles/visual.component.scss'],
+})
+export class Visual8Component implements AfterViewInit {
+  @ViewChild('target', { static: false }) target: ElementRef;
+  static title = "鼠标方向特效";
+  static href = 'http://101.200.60.78/archives/css%E7%BF%BB%E8%BD%AC%E6%A0%B7%E5%BC%8F';
+
+  constructor(private render: Renderer2) { }
+  public ngAfterViewInit(): void {
+    const element = this.target.nativeElement;
+    const enter$ = fromEvent(element, 'mouseover');
+    const leave$ = fromEvent(element, 'mouseout');
+    const move$ = fromEvent(document, 'mousemove')
+      .pipe(
+        map((event: MouseEvent) => { return { x: event.x, y: event.y } }),
+      );
+    // 每当进入一个新的点时，获取最新的move坐标
+    this.stateChange(enter$, move$, 'enter')
+      .subscribe();
+    this.stateChange(leave$, move$, 'leave')
+      .subscribe();
+  }
+
+  private stateChange(source$: Observable<any>, fromSource$: Observable<any>, state: string): any {
+    const element$ = source$.pipe(pluck('target'),
+      filter((target: HTMLElement) => target.classList.contains('item')));
+    return zip(
+      element$,
+      this.dir(element$, fromSource$)
+    ).pipe(
+      map(([target, dir]) => {
+        this.render.setAttribute(target, 'dir', dir);
+        this.render.setAttribute(target, 'state', state);
+        return target;
+      }),
+      // delay(500),
+      // tap((target) =>  this.render.setAttribute(target, 'state', 'pause'))
+    );
+  }
+
+  private dir(source$: Observable<any>, fromSource$: Observable<any>): any {
+    return source$.pipe(
+      map(this._getDomCenterPoint),
+      withLatestFrom(fromSource$),
+      map(this._calcDirection));
+  }
+
+  private _getDomCenterPoint(dom: HTMLElement): { x: number, y: number } {
+    const rect = dom.getBoundingClientRect();
+    const { x, y, height, width } = rect as DOMRect;
+    return { x: x + width / 2, y: y + height / 2 };
+  }
+
+  private _calcDirection([pointA, pointB]): string {
+    const { x, y } = pointA;
+    const { x: x1, y: y1 } = pointB;
+    const sy = y - y1;
+    const sx = x - x1;
+    const k = sy / sx;
+    let result;
+    // 斜率大于1 在上或者下， 负责左右
+    if (Math.abs(k) >= 1) {
+      // 判断上还是下
+      result = sy >= 0 ? 0 : 1;
+    } else {
+      result = sx >= 0 ? 2 : 3;
+    }
+    const directions = ['top', 'bottom', 'left', 'right'];
+    return directions[result];
+  }
+
+}
+
+
+
 export const visualComponents = [
   Visual1Component,
   Visual2Component,
@@ -123,6 +212,7 @@ export const visualComponents = [
   Visual5Component,
   Visual6Component,
   Visual7Component,
+  Visual8Component
 ];
 
 export default visualComponents;
