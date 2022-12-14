@@ -7,7 +7,6 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "deploy": "ng deploy --base-href=/my-app/",
     "e2e": "ng e2e"
   },
   "private": true,
