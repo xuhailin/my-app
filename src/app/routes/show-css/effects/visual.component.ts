@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { forkJoin, fromEvent, merge, Observable, of, zip } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild, Directive, OnInit } from '@angular/core';
+import { combineLatest, forkJoin, fromEvent, merge, Observable, of, zip } from 'rxjs';
 import { delay, filter, last, map, mergeMap, pluck, repeatWhen, take, takeLast, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
@@ -50,6 +50,30 @@ export class Visual3Component {
 })
 export class Visual4Component {
   static title = "毛玻璃效果"
+}
+
+@Component({
+  selector: 'visual-41',
+  template: `<img id="diamond" src="assets/images/search/effectImg1.png" />`,
+  styles: [
+    `
+    #diamond {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+      /*polygon 多边形裁剪*/
+      transition: 1s clip-path;
+    
+      &:hover {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+    `
+  ],
+})
+export class Visual41Component {
+  static title = "菱形图片"
 }
 
 @Component({
@@ -117,26 +141,43 @@ export class Visual7Component {
   // 借助svg实现
 }
 
+@Component({
+  selector: 'mask-1',
+  template: `
+   <div class="mask-1">
+     <div class="example-1"></div>
+     <div class="example-2"></div>
+     <div class="example-3"></div>
+     <div class="example-4"></div>
+   </div>
+  `,
+  styleUrls: ['../styles/mask.component.scss'],
+})
+export class Mask1Component {
+  static title = "MaskImage"
+}
 
 @Component({
   selector: 'visual-8',
   template: `
   <div class="visual-8">
     <div class="container" #target>
-      <div class="item">X</div>
-      <div class="item">H</div>
-      <div class="item">L</div>
-      <div class="item">A</div>
+      <div class="item" dir="left" state="leave" origin="top left">X</div>
+      <div class="item" dir="left" state="leave" origin="top left">H</div>
+      <div class="item" dir="left" state="leave" origin="top left">L</div>
+      <div class="item" dir="left" state="leave" origin="top left">A</div>
     </div>
   </div>`,
   styleUrls: ['../styles/visual.component.scss'],
 })
 export class Visual8Component implements AfterViewInit {
-  @ViewChild('target', { static: false }) target: ElementRef;
-  static title = "鼠标方向特效";
+  static title = '鼠标方向特效';
   static href = 'http://101.200.60.78/archives/css%E7%BF%BB%E8%BD%AC%E6%A0%B7%E5%BC%8F';
+  @ViewChild('target', { static: false }) target: ElementRef;
+  private currentPos: string;
+  private dirs = ['top left', 'top right', 'bottom left', 'bottom right'];
 
-  constructor(private render: Renderer2) { }
+  constructor (private render: Renderer2) { }
   public ngAfterViewInit(): void {
     const element = this.target.nativeElement;
     const enter$ = fromEvent(element, 'mouseover');
@@ -155,25 +196,31 @@ export class Visual8Component implements AfterViewInit {
   private stateChange(source$: Observable<any>, fromSource$: Observable<any>, state: string): any {
     const element$ = source$.pipe(pluck('target'),
       filter((target: HTMLElement) => target.classList.contains('item')));
-    return zip(
-      element$,
-      this.dir(element$, fromSource$)
-    ).pipe(
-      map(([target, dir]) => {
+    return this.dir(element$, fromSource$)
+      .pipe(map(([target, dir]) => {
+        (target as HTMLElement).style.setProperty('--visual8-transition', 'none');
         this.render.setAttribute(target, 'dir', dir);
-        this.render.setAttribute(target, 'state', state);
+        this.render.setAttribute(target, 'origin', this._calcOrigin(dir));
+        setTimeout(() => {
+          // 重新开启transition
+          (target as HTMLElement).style.removeProperty('--visual8-transition');
+          this.render.setAttribute(target, 'state', state);
+        });
         return target;
       }),
-      // delay(500),
-      // tap((target) =>  this.render.setAttribute(target, 'state', 'pause'))
-    );
+        // delay(500),
+        // tap((target) =>  this.render.setAttribute(target, 'state', 'pause'))
+      );
   }
 
   private dir(source$: Observable<any>, fromSource$: Observable<any>): any {
     return source$.pipe(
-      map(this._getDomCenterPoint),
       withLatestFrom(fromSource$),
-      map(this._calcDirection));
+      map(([dom, pointB]) => {
+        const pointA = this._getDomCenterPoint(dom);
+        const dir = this._calcDirection([pointA, pointB]);
+        return [dom, dir];
+      }));
   }
 
   private _getDomCenterPoint(dom: HTMLElement): { x: number, y: number } {
@@ -200,19 +247,34 @@ export class Visual8Component implements AfterViewInit {
     return directions[result];
   }
 
+  private _calcOrigin(dir: string): string {
+    if (!this.currentPos) {
+      this.currentPos = this.dirs.find((item) => item.includes(dir));
+    } else {
+      const validDirs = this.dirs.filter((item) => item.includes(dir));
+      if (validDirs[0] === this.currentPos || validDirs[1] === this.currentPos) {
+        this.currentPos = validDirs[0] === this.currentPos ? validDirs[0] : validDirs[1];
+      } else {
+        const values = this.currentPos.split(' ');
+        this.currentPos = validDirs[0].includes(values[0]) || validDirs[0].includes(values[1]) ? validDirs[0] : validDirs[1];
+      }
+    }
+    return this.currentPos;
+  }
+
 }
-
-
 
 export const visualComponents = [
   Visual1Component,
   Visual2Component,
   Visual3Component,
   Visual4Component,
+  Visual41Component,
   Visual5Component,
   Visual6Component,
   Visual7Component,
-  Visual8Component
+  Visual8Component,
+  Mask1Component
 ];
 
 export default visualComponents;
