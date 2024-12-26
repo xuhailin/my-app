@@ -54,7 +54,7 @@ export class ArticleComponent implements OnInit {
   loadArticles(): void {
     this.http.get('assets/data/topic.json')
       .subscribe((data: any[]) => {
-        const keys = Object.keys(data).slice(0, 5);
+        const keys = Object.keys(data).slice();
         const newData = {};
         keys.forEach((key) => {
           newData[key] = data[key];
