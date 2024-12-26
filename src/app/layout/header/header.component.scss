@@ -1,69 +1,76 @@
-
 @import 'src/styles/variables.scss';
 
 :host {
-  animation-duration: .5s;
+  animation-duration : .5s;
   animation-fill-mode: both;
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  display: block;
-  width: 100%;
-  height: 80px;
- // box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-  line-height: 80px;
+  position           : fixed;
+  z-index            : 10;
+  top                : 0;
+  display            : block;
+  width              : 100%;
+  height             : 80px;
+  // box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  line-height        : 80px;
+
   .layout-header {
-    padding: 0 100px;
-    box-sizing: border-box;
-    margin: 0 auto;
-    display: flex;
+    padding        : 0 100px;
+    box-sizing     : border-box;
+    margin         : 0 auto;
+    display        : flex;
     justify-content: space-between;
 
     .header-title {
-      $width: 140px;
-      $height: 60px;
+      $width       : 140px;
+      $height      : 60px;
       $bottomLength: 40px;
-      $length: $width * 2 + $height * 2;
-      position: relative;
-      width: $width;
-      height: $height;
-      top: 15px;
+      $length      : $width * 2 + $height * 2;
+      position     : relative;
+      width        : $width;
+      height       : $height;
+      top          : 15px;
+      cursor       : pointer;
+
       svg rect {
-        $line-width: 40;
-        stroke-dasharray: $bottomLength $length - $bottomLength;
+        $line-width      : 40;
+        stroke-dasharray : $bottomLength $length - $bottomLength;
         stroke-dashoffset: $width / 2 + $bottomLength / 2 + $height;
-        stroke-width: 8px;
-        fill: transparent;
-        border-bottom: 5px solid black;
-        transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+        stroke-width     : 8px;
+        fill             : transparent;
+        border-bottom    : 5px solid black;
+        transition       : stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
       }
+
       &:hover {
         svg rect {
-          stroke-width: 4px;
+          stroke-width     : 4px;
           stroke-dashoffset: 0;
-          stroke-dasharray: $length;
-         }
+          stroke-dasharray : $length;
+        }
       }
+
       .text {
-        font-size: 20px;
-        line-height: $height;
+        font-size     : 20px;
+        line-height   : $height;
         letter-spacing: 8px;
-        margin-left: 4px;
-        text-align: center;
-        color: $text-color;
-        top: 0;
-        position: absolute;
-        width: 100%;
+        margin-left   : 4px;
+        text-align    : center;
+        color         : $text-color;
+        top           : 0;
+        position      : absolute;
+        width         : 100%;
       }
     }
   }
 }
+
 :host ::ng-deep {
+
   /* tab style */
   .mat-tab-nav-bar {
     border-bottom: none;
+
     .mat-tab-link {
-      height: 70px;
+      height   : 70px;
       font-size: 16px;
     }
   }

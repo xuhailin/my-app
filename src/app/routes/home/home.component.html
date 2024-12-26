@@ -22,7 +22,7 @@
   <div class="article-recent">
     <div class="article" *ngFor="let item of articles | keyvalue">
       <div class="article-publication-meta">
-          Article
+        Article
         <span class="time">
           {{ item.key }}
         </span>
@@ -37,6 +37,8 @@
         <strong *ngFor="let tag of item.value.tags">{{tag}}</strong>
       </div>
     </div>
+    <section class="article-more"
+      (click)="gotoArticles()"><span>更多</span></section>
   </div>
 
   <div class="effect-css">

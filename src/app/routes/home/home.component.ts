@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,7 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
   articles: any = {};
   shapeData = [];
-  constructor(private http: HttpClient ) { }
+  constructor (
+    private router: Router,
+    private http: HttpClient) { }
 
   ngOnInit() {
     this.loadArticles();
@@ -26,5 +28,9 @@ export class HomeComponent implements OnInit {
         });
         this.articles = newData;
       });
+  }
+
+  gotoArticles() {
+    this.router.navigate(['/articles']);
   }
 }

@@ -1,49 +1,56 @@
 @import 'src/styles/variables.scss';
 
-$topic-width: 250px;
+$topic-width : 250px;
 $topic-height: 350px;
 
 :host {
+
   .article {
-    width: 250px;
-    height: 350px;
-    overflow: hidden;
-    background: #17141d;
+    width        : 250px;
+    height       : 350px;
+    overflow     : hidden;
+    background   : #17141d;
     border-radius: 15px;
-    padding: 20px;
-    box-shadow: -15px 0 45px $box-shadow-color;
-    transition: all 0.2s;
-    position: relative;
-    user-select: none;
+    padding      : 20px;
+    box-shadow   : -15px 0 45px $box-shadow-color;
+    transition   : all 0.2s;
+    position     : relative;
+    user-select  : none;
+
     &-recent {
-      display: flex;
-      padding: 30px;
-      background: rgb(255 255 255 / 0.3);
+      padding      : 30px;
+      background   : rgb(255 255 255 / 0.3);
       border-radius: 10px;
-      position: relative;
+      position     : relative;
+      display      : flex;
+
       &::before {
-        content: '最近文章';
+        content : '最近文章';
         position: absolute;
       }
     }
+
     &:not(:first-child) {
       margin-left: -140px;
     }
+
     &:hover {
       transform: translateY(-15px);
     }
 
     &-publication-meta {
       font-size: 12px;
+
       .time {
         color: $sub-text-color;
       }
     }
 
     &-title {
-      margin: 20px 0;
+      margin     : 20px 0;
       font-weight: 700;
-      cursor: pointer;
+      cursor     : pointer;
+
       &:hover {
         @include color-background();
       }
@@ -55,34 +62,78 @@ $topic-height: 350px;
 
     &-footer {
       position: absolute;
-      bottom: 20px;
-      color: $sub-text-color;
+      bottom  : 20px;
+      color   : $sub-text-color;
+
       strong {
         display: block;
       }
     }
+
+    &-more {
+      position: absolute;
+      right   : 10px;
+      bottom  : 0;
+
+      span {
+        font-size        : 16px;
+        line-height      : 60px;
+        letter-spacing   : 8px;
+        margin-left      : 4px;
+        text-align       : center;
+        color            : rgba(255, 255, 255, 0.87);
+        width            : 100%;
+        padding          : 8px 16px;
+        border           : 2px solid;
+        border-radius    : 2px;
+        // border-image  : linear-gradient(0deg, #ff8a00, #e52e71) 1;
+        cursor           : pointer;
+        position         : relative;
+        z-index          : 1;
+
+        &::before {
+          content   : '';
+          position  : absolute;
+          top       : 0;
+          left      : 0;
+          bottom    : 0;
+          width     : 0;
+          z-index   : -1;
+          transition: width 0.3s;
+          background: linear-gradient(90deg, #ff8a00, #e52e71);
+          // https://www.zhangxinxu.com/wordpress/2024/11/css-calc-interpolate-size/
+
+        }
+
+        &:hover::before {
+          width: 100%;
+          color: white;
+        }
+      }
+    }
   }
+
   // 后面所有的article标签 + 是一个
-  .article:focus ~ .article, .article:hover ~ .article {
+  .article:focus~.article,
+  .article:hover~.article {
     transform: translateX(130px);
   }
 
   .article-box {
-    display: flex;
+    display       : flex;
     flex-direction: column;
   }
 
   .header-card {
     background-image: linear-gradient(0deg, #ff8a00, #e52e71);
-    position: relative;
-    border-radius: 16px;
-    padding: 12px;
-    display: flex !important;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex: 0 0 250px;
-    display: block;
-    margin-right: 30px;
+    position        : relative;
+    border-radius   : 16px;
+    padding         : 12px;
+    display         : flex !important;
+    justify-content : flex-end;
+    flex-direction  : column;
+    flex            : 0 0 250px;
+    display         : block;
+    margin-right    : 30px;
   }
 }
-

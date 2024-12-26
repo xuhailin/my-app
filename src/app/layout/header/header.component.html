@@ -1,15 +1,16 @@
 <div class="layout-header">
-  <div class="header-title">
-    <svg width="140" height="60" xmlns="http://www.w3.org/2000/svg" version="1.1">
-      <defs> 
-        <linearGradient id="linear"  x1="100%" x2="0%" y1="100%"  y2="100%"> 
-          <stop offset="0%" stop-color="#ff8a00"/>
-          <stop offset="100%" stop-color="#e52e71"/>
-        </linearGradient> 
-        </defs>
+  <div class="header-title" (click)="gotoHome()">
+    <svg width="140" height="60" xmlns="http://www.w3.org/2000/svg"
+      version="1.1">
+      <defs>
+        <linearGradient id="linear" x1="100%" x2="0%" y1="100%" y2="100%">
+          <stop offset="0%" stop-color="#ff8a00" />
+          <stop offset="100%" stop-color="#e52e71" />
+        </linearGradient>
+      </defs>
       <rect width="140" height="60" stroke="url(#linear)"></rect>
     </svg>
-    <div class="text">徐海林</div>
+    <div class="text" >徐海林</div>
   </div>
   <!-- <nav mat-tab-nav-bar class="header-tabs">
     <a mat-tab-link
@@ -23,7 +24,7 @@
   </nav> -->
 </div>
 <div class="layout-header-bg">
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="500px" height="500px" version="1.1">
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="500px" height="500px" version="1.1">
       <rect x="50" y="100" width="300" height="150"
       style="fill:rgb(145,245,255);stroke-width:5;stroke:#EE799F;fill-opacity:0.9;stroke-opacity:0.9;"/>
     </svg> -->

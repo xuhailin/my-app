@@ -1,0 +1,13 @@
+@import 'src/styles/variables.scss';
+
+:host {
+  .article {
+    margin-left: 24px;
+    cursor     : pointer;
+    flex       : 1;
+
+    &:hover h3 {
+      @include color-background();
+    }
+  }
+}

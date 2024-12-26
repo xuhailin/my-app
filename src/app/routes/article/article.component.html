@@ -1,1 +1,15 @@
-<p>article works!</p>
+<mat-list>
+  <ng-container *ngFor="let item of articles | keyvalue">
+    <mat-list-item>
+      <mat-icon matListIcon
+        [style.color]="item.value.iconColor">{{item.value.icon}}</mat-icon>
+      <div class="article" [routerLink]="['/topic', item.key]">
+        <h3 matLine>{{item.value.title}}</h3>
+        <p matLine>{{item.value.description}}</p>
+        <p matLine>{{item.key}}</p>
+      </div>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>

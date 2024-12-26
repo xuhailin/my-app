@@ -1,8 +1,9 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {LayoutComponent} from '../layout/layout.component';
-import {SearchComponent} from './search/search.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LayoutComponent } from '../layout/layout.component';
+import { SearchComponent } from './search/search.component';
 import { TopicComponent } from './topic/topic.component';
+import { ArticleComponent } from './article/article.component';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,8 @@ export const routes: Routes = [
       { path: '', loadChildren: './home/home.module#HomeModule' },
       { path: 'search', component: SearchComponent },
       { path: 'topic/:id', component: TopicComponent },
-      { path: '**', redirectTo: ''},
+      { path: 'articles', component: ArticleComponent },
+      { path: '**', redirectTo: '' },
     ],
   },
 ];

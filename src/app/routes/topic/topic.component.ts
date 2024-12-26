@@ -3,6 +3,7 @@ import { Router, Route, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
 import { of, Observable, Observer } from 'rxjs';
+import { Location } from '@angular/common';
 import marked from 'marked';
 
 @Component({
@@ -14,7 +15,10 @@ export class TopicComponent implements OnInit {
   articleName: string;
   articleContent;
   error = null;
-  constructor(private route: ActivatedRoute, private http: HttpClient ) { }
+  constructor (
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -25,17 +29,21 @@ export class TopicComponent implements OnInit {
 
   }
 
+  goBack() {
+    this.location.back();
+  }
+
   loadArticle(id: string) {
     fetch(`./assets/data/articles/${id}.md`)
-        .then(data => data.text())
-        .then (text => {
-          const content = text.trim();
-          this.parseFrontMatter(content);
-        });
+      .then(data => data.text())
+      .then(text => {
+        const content = text.trim();
+        this.parseFrontMatter(content);
+      });
   }
 
   parseFrontMatter(content: string) {
-// Override function
+    // Override function
     const tokenizer = {
       codespan(src) {
         const match = src.match(/\$+([^\$\n]+?)\$+/);
@@ -49,7 +57,7 @@ export class TopicComponent implements OnInit {
         return false;
       }
     };
-  //  marked.use({ tokenizer });
+    //  marked.use({ tokenizer });
     console.log(marked);
     this.articleContent = marked(content);
   }
