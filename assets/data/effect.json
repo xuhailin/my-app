@@ -12,17 +12,8 @@
       "https://css-tricks.com/animating-with-clip-path/"
     ]
   },
-  "mask": {
-    "title": "mask",
-    "herfs": [
-      "https://css-tricks.com/animating-with-clip-path/"
-    ]
-  },
   "bg-and-border": {
     "title": "背景与边框"
-  },
-  "shape": {
-    "title": "形状"
   },
   "visual": {
     "title": "视觉效果"
