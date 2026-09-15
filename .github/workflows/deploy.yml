@@ -32,6 +32,8 @@ jobs:
           npx ng build --prod
           # 404.html 是 GitHub Pages 的 SPA 深链接兜底页，内容与首页一致即可
           cp docs/index.html docs/404.html
+          # .nojekyll 禁用 Jekyll：保证带 front-matter 的文章 md 按原样提供
+          touch docs/.nojekyll
 
       - name: Commit build output (docs/)
         run: |
