@@ -1,12 +1,12 @@
 <mat-list>
-  <ng-container *ngFor="let item of articles | keyvalue">
+  <ng-container *ngFor="let item of articles">
     <mat-list-item>
       <mat-icon matListIcon
-        [style.color]="item.value.iconColor">{{item.value.icon}}</mat-icon>
-      <div class="article" [routerLink]="['/topic', item.key]">
-        <h3 matLine>{{item.value.title}}</h3>
-        <p matLine>{{item.value.description}}</p>
-        <p matLine>{{item.key}}</p>
+        [style.color]="item.iconColor">{{item.icon}}</mat-icon>
+      <div class="article" [routerLink]="['/topic', item.file]">
+        <h3 matLine>{{item.title}}</h3>
+        <p matLine>{{item.description}}</p>
+        <p matLine>{{item.date}}</p>
       </div>
     </mat-list-item>
 

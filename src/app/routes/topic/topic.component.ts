@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { of, Observable, Observer } from 'rxjs';
 import { Location } from '@angular/common';
 import marked from 'marked';
+import { parseFrontMatter } from '../../shared/front-matter';
 
 @Component({
   selector: 'app-topic',
@@ -37,28 +38,8 @@ export class TopicComponent implements OnInit {
     fetch(`./assets/data/articles/${id}.md`)
       .then(data => data.text())
       .then(text => {
-        const content = text.trim();
-        this.parseFrontMatter(content);
+        const { content } = parseFrontMatter(text);
+        this.articleContent = marked(content.trim());
       });
-  }
-
-  parseFrontMatter(content: string) {
-    // Override function
-    const tokenizer = {
-      codespan(src) {
-        const match = src.match(/\$+([^\$\n]+?)\$+/);
-        if (match) {
-          return {
-            type: 'codespan',
-            raw: match[0],
-            text: match[1].trim()
-          };
-        }
-        return false;
-      }
-    };
-    //  marked.use({ tokenizer });
-    console.log(marked);
-    this.articleContent = marked(content);
   }
 }

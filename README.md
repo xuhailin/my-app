@@ -5,6 +5,15 @@ angular version: `8.0.0`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
+## 博客写作
+
+文章内容在 `src/assets/data/articles/`（Markdown + front-matter），支持两种方式管理：
+
+- **网页后台**：站点部署后访问 `/admin/`，用 GitHub 访问令牌登录即可在线写文章、传图片，保存后自动构建发布
+- **本地写作**：直接添加 md 文件后 `npm run build` 并推送
+
+详细说明见 [CMS-SETUP.md](CMS-SETUP.md)。
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

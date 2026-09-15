@@ -1,0 +1,46 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - 'docs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Angular 8 的 webpack 4 需要 Node 12
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '12'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate article index
+        run: node scripts/gen-articles-index.js
+
+      - name: Build
+        run: |
+          npx ng build --prod
+          # 404.html 是 GitHub Pages 的 SPA 深链接兜底页，内容与首页一致即可
+          cp docs/index.html docs/404.html
+
+      - name: Commit build output (docs/)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "chore: 构建发布 [skip ci]"
+            git push
+          fi

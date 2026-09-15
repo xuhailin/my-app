@@ -1,0 +1,44 @@
+site_url: https://xuhailin.github.io/my-app
+
+backend:
+  name: github
+  repo: xuhailin/my-app
+  branch: master
+
+media_folder: src/assets/data/images
+public_folder: /my-app/assets/data/images
+
+collections:
+  - name: articles
+    label: 文章
+    label_singular: 文章
+    folder: src/assets/data/articles
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    preview_path: 'topic/{{slug}}'
+    sortable_fields: [date, title]
+    summary: '{{title}} — {{date}}'
+    editor:
+      preview: false
+    fields:
+      - label: 标题
+        name: title
+        widget: string
+      - label: 日期
+        name: date
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+      - label: 标签
+        name: tags
+        widget: list
+        required: false
+        default: []
+      - label: 摘要
+        name: description
+        widget: text
+        required: false
+      - label: 正文
+        name: body
+        widget: markdown

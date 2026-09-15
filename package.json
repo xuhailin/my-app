@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "articles": "node scripts/gen-articles-index.js",
     "start": "ng serve --port 3000",
-    "build": "ng build --prod",
+    "build": "npm run articles && ng build --prod && cp docs/index.html docs/404.html",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

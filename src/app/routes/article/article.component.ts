@@ -8,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent implements OnInit {
-  public articles = {};
+  public articles = [];
 
   public colors: string[] = [
     // 橙色相关
@@ -52,17 +52,12 @@ export class ArticleComponent implements OnInit {
   }
 
   loadArticles(): void {
-    this.http.get('assets/data/topic.json')
+    this.http.get('assets/data/articles.json')
       .subscribe((data: any[]) => {
-        const keys = Object.keys(data).slice();
-        const newData = {};
-        keys.forEach((key) => {
-          newData[key] = data[key];
+        this.articles = data.map((article) => {
           const [icon, iconColor] = this.getRandomIcon();
-          newData[key]['icon'] = icon;
-          newData[key]['iconColor'] = iconColor;
+          return { ...article, icon, iconColor };
         });
-        this.articles = newData;
       });
   }
 
